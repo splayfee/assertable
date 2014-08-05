@@ -16,7 +16,9 @@
      "arguments",
      "method",
      "function",
-     "test"
+     "test",
+      "marcom",
+      "qa-tools"
    ],
   "author": "David LaTour <david@edium.com>",
   "license": "LICENSE-APPLE",
