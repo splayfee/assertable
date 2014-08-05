@@ -6,6 +6,8 @@
  * @version 1.00.00
  */
 
+var util = require("util");
+
 // Populate the class2type map
 var class2type = {};
 "Boolean Number String Function Array Date RegExp Object Error".split(" ").forEach(
@@ -13,9 +15,22 @@ var class2type = {};
         class2type[ "[object " + name + "]" ] = name.toLowerCase();
  });
 
-// Safer way to determine the actual type of an object.
+
+/**
+ * Safer way to determine the actual type of an object.
+ * @param object
+ * @returns {*}
+ */
 function getType(object) {
     return class2type[Object.prototype.toString.call(object)];
+}
+
+/**
+ * This method parses the value into the appropriate output.
+ * @param value
+ */
+function parseValue(value) {
+  return util.inspect(value);
 }
 
 /**
@@ -25,7 +40,7 @@ function getType(object) {
 module.exports.isArray = function (value) {
   var error;
   if (!Array.isArray(value)) {
-    error = new TypeError("Bad Argument - value '" + String(value) + "' is not an array");
+    error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is not an array");
     throw error;
   }
 };
@@ -37,7 +52,7 @@ module.exports.isArray = function (value) {
 module.exports.isBoolean = function (value) {
   var error;
   if (getType(value) !== "boolean") {
-    error = new TypeError("Bad Argument - value '" + String(value) + "' is not a boolean");
+    error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is not a boolean");
     throw error;
   }
 };
@@ -53,7 +68,7 @@ module.exports.isBuffer = function (value, length) {
   length = module.exports.setDefault(length, 0);
 
   if (!Buffer.isBuffer(value)) {
-    error = new TypeError("Bad Argument - value '" + String(value) + "' is not a buffer");
+    error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is not a buffer");
     throw error;
   } else if (length > 0 && value.length !== length) {
     error = new RangeError("Bad Argument - buffer length is out of range");
@@ -68,7 +83,7 @@ module.exports.isBuffer = function (value, length) {
 module.exports.isDate = function (value) {
     var error;
     if (getType(value) !== "date") {
-        error = new TypeError("Bad Argument - value '" + String(value) + "' is not a date");
+        error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is not a date");
         throw error;
     }
 };
@@ -92,7 +107,7 @@ module.exports.isDefined = function (value) {
 module.exports.isError = function (value) {
     var error;
     if (getType(value) !== "error") {
-        error = new TypeError("Bad Argument - value '" + String(value) + "' is not an Error");
+        error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is not an Error");
         throw error;
     }
 };
@@ -104,7 +119,7 @@ module.exports.isError = function (value) {
 module.exports.isFunction = function (value) {
   var error;
   if (!value || getType(value) !== "function") {
-    error = new TypeError("Bad Argument - value '" + String(value) + "' is not a function");
+    error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is not a function");
     throw error;
   }
 };
@@ -131,10 +146,10 @@ module.exports.isInstance = function (instance, constructorFunction) {
 module.exports.isNumber = function (value, low, high) {
   var error;
   if (getType(value) !== "number") {
-    error = new TypeError("Bad Argument - value '" + String(value) + "' is not a number");
+    error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is not a number");
     throw error;
   } else if ((low !== undefined && value < low) || (high !== undefined && value > high)) {
-    error = new RangeError("Bad Argument - value '" + String(value) + "' is out of range");
+    error = new RangeError("Bad Argument - value '" + parseValue(value) + "' is out of range");
     throw error;
   }
 };
@@ -147,12 +162,12 @@ module.exports.isNumber = function (value, low, high) {
 module.exports.isObject = function (value, requiredProperties) {
   var error;
   if (!value || getType(value) !== "object") {
-    error = new TypeError("Bad Argument - value '" + String(value) + "' is not an object");
+    error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is not an object");
     throw error;
   } else if (arguments.length > 1) {
     Array.prototype.slice.call(arguments, 1).forEach(function (p) {
       if (value[p] === undefined) {
-        error = new TypeError("Bad Argument - value '" + String(value) + "' is missing required properties");
+        error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is missing required properties");
         throw error;
       }
     });
@@ -166,7 +181,7 @@ module.exports.isObject = function (value, requiredProperties) {
 module.exports.isRegExp = function (value) {
     var error;
     if (getType(value) !== "regexp") {
-        error = new TypeError("Bad Argument - value '" + String(value) + "' is not a RegExp");
+        error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is not a RegExp");
         throw error;
     }
 };
@@ -179,17 +194,17 @@ module.exports.isRegExp = function (value) {
 module.exports.isString = function (value, values) {
   var error;
   if (getType(value) !== "string") {
-    error = new TypeError("Bad Argument - value '" + String(value) + "' is not a string");
+    error = new TypeError("Bad Argument - value '" + parseValue(value) + "' is not a string");
     throw error;
   } else if (values) {
      value = value.toString();
     if (values instanceof RegExp) {
       if (!values.test(value)) {
-        error = new TypeError("Bad Argument - value '" + String(value) + "' does not match the Regular Expression");
+        error = new TypeError("Bad Argument - value '" + parseValue(value) + "' does not match the Regular Expression");
         throw error;
       }
     } else if (Array.prototype.slice.call(arguments, 1).indexOf(value) === -1) {
-      error = new TypeError("Bad Argument - value '" + String(value) + "' does not match supplied list values");
+      error = new TypeError("Bad Argument - value '" + parseValue(value) + "' does not match supplied list values");
       throw error;
     }
   }
