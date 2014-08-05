@@ -1,0 +1,32 @@
+{
+  "name": "qa-validate-arguments",
+  "version": "0.0.1",
+  "description": "Test for type/existence of method arguments before they can cause problems deeper down the stack.",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://interactive-git.apple.com/interactive-qa-fe/qa-validate-arguments"
+    },
+    "scripts": {
+        "test": "./node_modules/mocha/bin/mocha ."
+    },
+    "keywords": [
+     "validator",
+     "tool",
+     "arguments",
+     "method",
+     "function",
+     "test"
+   ],
+  "author": "David LaTour <david@edium.com>",
+  "license": "LICENSE-APPLE",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^1.18.2"
+  },
+    "publishConfig": {
+        "registry": "https://npm.interactive-apps.apple.com"
+    }
+}
