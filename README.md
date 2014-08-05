@@ -38,28 +38,30 @@ Once you have reference you can type-check your arguments within functions:
 
 ```javascript
 function doSomeWork(someArray, someBoolean, someBuffer, someFunction) {
-	ArgumentValidator.isArray(someArray);
-	ArgumentValidator.isBoolean(someBoolean);
-	ArgumentValidator.isBuffer(someBuffer, 200); // requires a minimum for 200 bytes
-	ArgumentValidator.isFunction( someFunction );
-	ArgumentValidator.isString(someString, /(^\d{5}$)/); // Validate against the regular expression.
+	Validate.isArray(someArray);
+	Validate.isBoolean(someBoolean);
+	Validate.isBuffer(someBuffer, 200); // requires a minimum for 200 bytes
+	Validate.isFunction( someFunction );
+	Validate.isString(someString, /(^\d{5}$)/); // Validate against the regular expression.
 
     // Safely do some work.
 }
 
 function doSomeWork(someClass, someNumber, someObject, someString) {
-	ArgumentValidator.isFunction(someFunction);
-	ArgumentValidator.isClass(SomeClass);
-	ArgumentValidator.isNumber(someNumber, 1, 10); // validates a number within range from 1 to 10.
-	ArgumentValidator.isObject(someObject, "property1", "property2"); // Validates an object and the supplied properties.
-	ArgumentValidator.isString(someString, /(^\d{5}$)/); // Validate against the regular expression.
+	Validate.isFunction(someFunction);
+	Validate.isClass(SomeClass);
+	Validate.isNumber(someNumber, 1, 10); // validates a number within range from 1 to 10.
+	Validate.isObject(someObject, "property1", "property2"); // Validates an object and the supplied properties.
+	Validate.isString(someString, /(^\d{5}$)/); // Validate against the regular expression.
 
     // Safely do some work.
 
+}
+
 function doSomeWork(someDate, someError, someRegExp) {
-	ArgumentValidator.isDate(someDate);
-	ArgumentValidator.isError(someError);
-	ArgumentValidator.isRegExp(someRegExp);
+	Validate.isDate(someDate);
+	Validate.isError(someError);
+	Validate.isRegExp(someRegExp);
 
 	// Safely do some work.
 }
@@ -71,11 +73,11 @@ Set argument defaults before validation:
 
 ```javascript
 function doSomeWork(someArray, someBoolean) {
-	someArray = ArgumentValidator.setDefault(someArray, []);
-	someBoolean = ArgumentValidator.setDefault(someArray, false);
+	someArray = Validate.setDefault(someArray, []);
+	someBoolean = Validate.setDefault(someArray, false);
     
-	ArgumentValidator.isArray(someArray);
-	ArgumentValidator.isBoolean(someBoolean);
+	Validate.isArray(someArray);
+	Validate.isBoolean(someBoolean);
 }
 ```
 
