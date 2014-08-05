@@ -1,6 +1,7 @@
 "use strict";
 
-var expect = require("expect.js");
+var chai = require("chai");
+var expect = chai.expect;
 
 var Validate = require("../index");
 
@@ -14,7 +15,7 @@ describe("Validate", function () {
 
       expect(function () {
           Validate.isArray(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -27,7 +28,7 @@ describe("Validate", function () {
 
       expect(function () {
           Validate.isArray(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -38,7 +39,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isArray(null);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -51,7 +52,7 @@ describe("Validate", function () {
 
             expect(function () {
                 Validate.isBoolean(data);
-            }).not.to.throwError();
+            }).not.to.Throw();
 
         });
 
@@ -64,7 +65,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isBoolean(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -77,7 +78,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isBoolean(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -90,7 +91,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isArray(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -103,7 +104,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isArray(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -116,7 +117,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isArray(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -127,7 +128,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isBoolean(null);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -141,7 +142,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isBuffer(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -155,7 +156,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isBuffer(data, 55);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -168,7 +169,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isBuffer(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -182,7 +183,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isBuffer(data, 100);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -193,7 +194,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isBuffer(null);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -206,7 +207,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isDate(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -219,7 +220,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isDate(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -230,7 +231,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isDate(null);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -243,7 +244,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isDefined(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -254,7 +255,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isDefined(undefined);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -267,7 +268,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isDefined(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -280,7 +281,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isError(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -293,7 +294,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isError(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -304,7 +305,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isError(null);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -318,7 +319,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isFunction(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -331,7 +332,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isFunction(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -342,7 +343,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isFunction(null);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -355,7 +356,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isInstance(data, Date);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -368,7 +369,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isInstance(data, Date);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -379,7 +380,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isInstance(null, Date);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -392,7 +393,7 @@ describe("Validate", function () {
 
             expect(function () {
                 Validate.isNumber(data);
-            }).not.to.throwError();
+            }).not.to.Throw();
 
         });
 
@@ -405,7 +406,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isNumber(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -418,7 +419,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isNumber(data, -100, 20);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -431,7 +432,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isNumber(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -444,7 +445,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isNumber(data, 1, 10);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -457,7 +458,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isNumber(data, 1, 10);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -468,7 +469,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isNumber(null);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -483,7 +484,7 @@ describe("Validate", function () {
 
             expect(function () {
                 Validate.isObject(data);
-            }).not.to.throwError();
+            }).not.to.Throw();
 
         });
 
@@ -496,7 +497,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isObject(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -509,7 +510,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isObject(data, "name", "age");
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -521,7 +522,7 @@ describe("Validate", function () {
       var data = "testing123";
       expect(function () {
         Validate.isObject(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -534,7 +535,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isObject(data, "birthday");
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -545,7 +546,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isObject(null);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -558,7 +559,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isRegExp(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -571,7 +572,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isRegExp(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -582,7 +583,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isRegExp(null);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -595,7 +596,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isString(data);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -608,7 +609,7 @@ describe("Validate", function () {
 
             expect(function () {
                 Validate.isString(data, "testing123");
-            }).not.to.throwError();
+            }).not.to.Throw();
 
         });
 
@@ -621,7 +622,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isString(data, "testing123");
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -634,7 +635,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isString(data);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -647,7 +648,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isString(data, "testing456");
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -660,7 +661,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isString(data, new RegExp("/(^d{5}$)/"));
-      }).to.throwError();
+      }).to.Throw();
 
     });
 
@@ -673,7 +674,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isString(data, /(^\d{5}$)/);
-      }).not.to.throwError();
+      }).not.to.Throw();
 
     });
 
@@ -684,7 +685,7 @@ describe("Validate", function () {
 
       expect(function () {
         Validate.isString(null);
-      }).to.throwError();
+      }).to.Throw();
 
     });
 

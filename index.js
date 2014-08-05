@@ -6,7 +6,6 @@
  * @version 1.00.00
  */
 
-
 // Populate the class2type map
 var class2type = {};
 "Boolean Number String Function Array Date RegExp Object Error".split(" ").forEach(
