@@ -38,28 +38,28 @@ Once you have reference you can type-check your arguments within functions:
 
 ```javascript
 function doSomeWork(someArray, someBoolean, someBuffer, someFunction) {
-	ArgumentValidator.isArray( someArray );
-	ArgumentValidator.isBoolean( someBoolean );
-	ArgumentValidator.isBuffer( someBuffer, 200 ); // requires a minimum for 200 bytes
+	ArgumentValidator.isArray(someArray);
+	ArgumentValidator.isBoolean(someBoolean);
+	ArgumentValidator.isBuffer(someBuffer, 200); // requires a minimum for 200 bytes
 	ArgumentValidator.isFunction( someFunction );
-	ArgumentValidator.isString( someString, /(^\d{5}$)/ ); // Validate against the regular expression.
+	ArgumentValidator.isString(someString, /(^\d{5}$)/); // Validate against the regular expression.
 
     // Safely do some work.
 }
 
 function doSomeWork(someClass, someNumber, someObject, someString) {
-	ArgumentValidator.isFunction( someFunction );
-	ArgumentValidator.isClass( SomeClass );
-	ArgumentValidator.isNumber( someNumber, 1, 10 ); // validates a number within range from 1 to 10.
-	ArgumentValidator.isObject( someObject, "property1", "property2" ); // Validates an object and the supplied properties.
-	ArgumentValidator.isString( someString, /(^\d{5}$)/ ); // Validate against the regular expression.
+	ArgumentValidator.isFunction(someFunction);
+	ArgumentValidator.isClass(SomeClass);
+	ArgumentValidator.isNumber(someNumber, 1, 10); // validates a number within range from 1 to 10.
+	ArgumentValidator.isObject(someObject, "property1", "property2"); // Validates an object and the supplied properties.
+	ArgumentValidator.isString(someString, /(^\d{5}$)/); // Validate against the regular expression.
 
     // Safely do some work.
 
-function doSomeWork( someDate, someError, someRegExp) {
-	ArgumentValidator.isDate( someDate );
-	ArgumentValidator.isError( someError );
-	ArgumentValidator.isRegExp( someRegExp );
+function doSomeWork(someDate, someError, someRegExp) {
+	ArgumentValidator.isDate(someDate);
+	ArgumentValidator.isError(someError);
+	ArgumentValidator.isRegExp(someRegExp);
 
 	// Safely do some work.
 }
@@ -70,12 +70,12 @@ NOTE - when an argument fails a type-check Validate Arguments throws either a Ty
 Set argument defaults before validation:
 
 ```javascript
-function doSomeWork( someArray, someBoolean ) {
-	someArray = ArgumentValidator.setDefault( someArray, [] );
-	someBoolean = ArgumentValidator.setDefault( someArray, false );
+function doSomeWork(someArray, someBoolean) {
+	someArray = ArgumentValidator.setDefault(someArray, []);
+	someBoolean = ArgumentValidator.setDefault(someArray, false);
     
-	ArgumentValidator.isArray( someArray );
-	ArgumentValidator.isBoolean( someBoolean );    
+	ArgumentValidator.isArray(someArray);
+	ArgumentValidator.isBoolean(someBoolean);
 }
 ```
 
