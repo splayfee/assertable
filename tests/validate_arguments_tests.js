@@ -8,474 +8,591 @@ var Validate = require("../index");
 
 describe("Validate", function () {
 
-  describe("#isArray()", function () {
+  describe("#isArray", function () {
+    it("returns true", function () {
+      expect(Validate.isArray([])).to.eql(true);
+    });
+    it("returns true", function () {
+      expect(Validate.isArray(new Array())).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isArray("test")).to.eql(false);
+    });
+  });
+
+  describe("#isBoolean", function () {
+    it("returns true", function () {
+      expect(Validate.isBoolean(true)).to.eql(true);
+    });
+    it("returns true", function () {
+      expect(Validate.isBoolean(new Boolean(true))).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isBoolean("test")).to.eql(false);
+    });
+  });
+
+  describe("#isBuffer", function () {
+    it("returns true", function () {
+      expect(Validate.isBuffer(new Buffer(100))).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isBuffer("test")).to.eql(false);
+    });
+  });
+
+  describe("#isDate", function () {
+    it("returns true", function () {
+      expect(Validate.isDate(new Date())).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isDate("test")).to.eql(false);
+    });
+  });
+
+  describe("#isDefined", function () {
+    it("returns true", function () {
+      expect(Validate.isDefined({})).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isDefined(null)).to.eql(false);
+    });
+    it("returns false", function () {
+      expect(Validate.isDefined(undefined)).to.eql(false);
+    });
+  });
+
+  describe("#isError", function () {
+    it("returns true", function () {
+      expect(Validate.isError(new Error())).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isError("test")).to.eql(false);
+    });
+  });
+
+  describe("#isFunction", function () {
+    it("returns true", function () {
+      expect(Validate.isFunction(function(){})).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isFunction("test")).to.eql(false);
+    });
+  });
+
+  describe("#isNumber", function () {
+    it("returns true", function () {
+      expect(Validate.isNumber(123)).to.eql(true);
+    });
+    it("returns true", function () {
+      expect(Validate.isNumber(new Number(123))).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isNumber("test")).to.eql(false);
+    });
+  });
+
+  describe("#isObject", function () {
+    it("returns true", function () {
+      expect(Validate.isObject({})).to.eql(true);
+    });
+    it("returns true", function () {
+      expect(Validate.isObject(new Object())).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isObject("test")).to.eql(false);
+    });
+  });
+
+  describe("#isRegExp", function () {
+    it("returns true", function () {
+      expect(Validate.isRegExp(new RegExp())).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isRegExp("test")).to.eql(false);
+    });
+  });
+
+  describe("#isString", function () {
+    it("returns true", function () {
+      expect(Validate.isString("123")).to.eql(true);
+    });
+    it("returns true", function () {
+      expect(Validate.isString(new String("123"))).to.eql(true);
+    });
+    it("returns false", function () {
+      expect(Validate.isString(123)).to.eql(false);
+    });
+  });
+
+  describe("#assertArray()", function () {
     it("does not throw an error", function () {
 
       var data = [1, 2, 3];
 
       expect(function () {
-          Validate.isArray(data);
+          Validate.assertArray(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isArray()", function () {
+  describe("#assertArray()", function () {
     it("throws an error", function () {
 
       var data = "testing123";
 
       expect(function () {
-          Validate.isArray(data);
+          Validate.assertArray(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isArray()", function () {
+  describe("#assertArray()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isArray(null);
+        Validate.assertArray(null);
       }).to.throw();
 
     });
 
   });
 
-    describe("#isBoolean()", function () {
+    describe("#assertBoolean()", function () {
         it("does not throw an error", function () {
 
             var data = new Boolean(true);
 
             expect(function () {
-                Validate.isBoolean(data);
+                Validate.assertBoolean(data);
             }).not.to.throw();
 
         });
 
     });
 
-    describe("#isBoolean()", function () {
+    describe("#assertBoolean()", function () {
     it("does not throw an error", function () {
 
       var data = true;
 
       expect(function () {
-        Validate.isBoolean(data);
+        Validate.assertBoolean(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isBoolean()", function () {
+  describe("#assertBoolean()", function () {
     it("does not throw an error", function () {
 
       var data = false;
 
       expect(function () {
-        Validate.isBoolean(data);
+        Validate.assertBoolean(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isBoolean()", function () {
+  describe("#assertBoolean()", function () {
     it("throws an error", function () {
 
       var data = 0;
 
       expect(function () {
-        Validate.isArray(data);
+        Validate.assertArray(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isBoolean()", function () {
+  describe("#assertBoolean()", function () {
     it("throws an error", function () {
 
       var data = 1;
 
       expect(function () {
-        Validate.isArray(data);
+        Validate.assertArray(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isBoolean()", function () {
+  describe("#assertBoolean()", function () {
     it("throws an error", function () {
 
       var data = "true";
 
       expect(function () {
-        Validate.isArray(data);
+        Validate.assertArray(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isBoolean()", function () {
+  describe("#assertBoolean()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isBoolean(null);
+        Validate.assertBoolean(null);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isBuffer()", function () {
+  describe("#assertBuffer()", function () {
     it("does not throw an error", function () {
 
       var data = new Buffer(23);
       data.fill(25, 0, 22);
 
       expect(function () {
-        Validate.isBuffer(data);
+        Validate.assertBuffer(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isBuffer()", function () {
+  describe("#assertBuffer()", function () {
     it("does not throw an error", function () {
 
       var data = new Buffer(55);
       data.fill(25, 0, 54);
 
       expect(function () {
-        Validate.isBuffer(data, 55);
+        Validate.assertBuffer(data, 55);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isBuffer()", function () {
+  describe("#assertBuffer()", function () {
     it("throws an error", function () {
 
       var data = "testing123";
 
       expect(function () {
-        Validate.isBuffer(data);
+        Validate.assertBuffer(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isBuffer()", function () {
+  describe("#assertBuffer()", function () {
     it("throws an error due to size", function () {
 
       var data = new Buffer(55);
       data.fill(25, 0, 54);
 
       expect(function () {
-        Validate.isBuffer(data, 100);
+        Validate.assertBuffer(data, 100);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isBuffer()", function () {
+  describe("#assertBuffer()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isBuffer(null);
+        Validate.assertBuffer(null);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isDate()", function () {
+  describe("#assertDate()", function () {
     it("does not throw an error", function () {
 
       var data = new Date();
 
       expect(function () {
-        Validate.isDate(data);
+        Validate.assertDate(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isDate()", function () {
+  describe("#assertDate()", function () {
     it("throws an error", function () {
 
       var data = "1/2/2014";
 
       expect(function () {
-        Validate.isDate(data);
+        Validate.assertDate(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isDate()", function () {
+  describe("#assertDate()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isDate(null);
+        Validate.assertDate(null);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isDefined()", function () {
+  describe("#assertDefined()", function () {
     it("does not throw an error", function () {
 
       var data = "testing123";
 
       expect(function () {
-        Validate.isDefined(data);
+        Validate.assertDefined(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isDefined()", function () {
+  describe("#assertDefined()", function () {
     it("throws an error", function () {
 
       expect(function () {
-        Validate.isDefined(undefined);
+        Validate.assertDefined(undefined);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isDefined()", function () {
+  describe("#assertDefined()", function () {
     it("throws an error", function () {
 
       var data = null;
 
       expect(function () {
-        Validate.isDefined(data);
+        Validate.assertDefined(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isError()", function () {
+  describe("#assertError()", function () {
     it("does not throw an error", function () {
 
       var data = new Error("testing123");
 
       expect(function () {
-        Validate.isError(data);
+        Validate.assertError(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isError()", function () {
+  describe("#assertError()", function () {
     it("throws an error", function () {
 
       var data = "error:testing123";
 
       expect(function () {
-        Validate.isError(data);
+        Validate.assertError(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isError()", function () {
+  describe("#assertError()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isError(null);
+        Validate.assertError(null);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isFunction()", function () {
+  describe("#assertFunction()", function () {
     it("does not throw an error", function () {
 
       var data = function () {
       };
 
       expect(function () {
-        Validate.isFunction(data);
+        Validate.assertFunction(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isFunction()", function () {
+  describe("#assertFunction()", function () {
     it("throws an error", function () {
 
       var data = "testing123";
 
       expect(function () {
-        Validate.isFunction(data);
+        Validate.assertFunction(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isFunction()", function () {
+  describe("#assertFunction()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isFunction(null);
+        Validate.assertFunction(null);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isInstance()", function () {
+  describe("#assertInstance()", function () {
     it("does not throw an error", function () {
 
       var data = new Date();
 
       expect(function () {
-        Validate.isInstance(data, Date);
+        Validate.assertInstance(data, Date);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isInstance()", function () {
+  describe("#assertInstance()", function () {
     it("throws an error", function () {
 
       var data = "testing123";
 
       expect(function () {
-        Validate.isInstance(data, Date);
+        Validate.assertInstance(data, Date);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isInstance()", function () {
+  describe("#assertInstance()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isInstance(null, Date);
+        Validate.assertInstance(null, Date);
       }).to.throw();
 
     });
 
   });
 
-    describe("#isNumber()", function () {
+    describe("#assertNumber()", function () {
         it("does not throw an error", function () {
 
             var data = new Number(123);
 
             expect(function () {
-                Validate.isNumber(data);
+                Validate.assertNumber(data);
             }).not.to.throw();
 
         });
 
     });
 
-    describe("#isNumber()", function () {
+    describe("#assertNumber()", function () {
     it("does not throw an error", function () {
 
       var data = 123;
 
       expect(function () {
-        Validate.isNumber(data);
+        Validate.assertNumber(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isNumber()", function () {
+  describe("#assertNumber()", function () {
     it("does not throw an error within range", function () {
 
       var data = 10;
 
       expect(function () {
-        Validate.isNumber(data, -100, 20);
+        Validate.assertNumber(data, -100, 20);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isNumber()", function () {
+  describe("#assertNumber()", function () {
     it("throws an error", function () {
 
       var data = "123";
 
       expect(function () {
-        Validate.isNumber(data);
+        Validate.assertNumber(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isNumber()", function () {
+  describe("#assertNumber()", function () {
     it("throws an error out of range high", function () {
 
       var data = 11;
 
       expect(function () {
-        Validate.isNumber(data, 1, 10);
+        Validate.assertNumber(data, 1, 10);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isNumber()", function () {
+  describe("#assertNumber()", function () {
     it("throws an error out of range low", function () {
 
       var data = 0;
 
       expect(function () {
-        Validate.isNumber(data, 1, 10);
+        Validate.assertNumber(data, 1, 10);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isNumber()", function () {
+  describe("#assertNumber()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isNumber(null);
+        Validate.assertNumber(null);
       }).to.throw();
 
     });
 
   });
 
-    describe("#isObject()", function () {
+    describe("#assertObject()", function () {
         it("does not throw an error", function () {
 
             var data = new Object();
@@ -483,208 +600,227 @@ describe("Validate", function () {
             data.age = 45;
 
             expect(function () {
-                Validate.isObject(data);
+                Validate.assertObject(data);
             }).not.to.throw();
 
         });
 
     });
 
-    describe("#isObject()", function () {
+    describe("#assertObject()", function () {
     it("does not throw an error", function () {
 
       var data = {name: "David", age: 45};
 
       expect(function () {
-        Validate.isObject(data);
+        Validate.assertObject(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isObject()", function () {
+  describe("#assertObject()", function () {
     it("does not throw an error because properties exist", function () {
 
       var data = {name: "David", age: 45};
 
       expect(function () {
-        Validate.isObject(data, "name", "age");
+        Validate.assertObject(data, "name", "age");
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isObject()", function () {
+  describe("#assertObject()", function () {
     it("throws an error", function () {
 
       var data = "testing123";
       expect(function () {
-        Validate.isObject(data);
+        Validate.assertObject(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isObject()", function () {
+  describe("#assertObject()", function () {
     it("throws an error due to missing property", function () {
 
       var data = {name: "David", age: 45};
 
       expect(function () {
-        Validate.isObject(data, "birthday");
+        Validate.assertObject(data, "birthday");
       }).to.throw();
 
     });
 
   });
 
-  describe("#isObject()", function () {
+  describe("#assertObject()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isObject(null);
+        Validate.assertObject(null);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isRegExp()", function () {
+  describe("#assertRegExp()", function () {
     it("does not throw an error", function () {
 
       var data = new RegExp("/d5");
 
       expect(function () {
-        Validate.isRegExp(data);
+        Validate.assertRegExp(data);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isRegExp()", function () {
+  describe("#assertRegExp()", function () {
     it("throws an error", function () {
 
       var data = "/d5";
 
       expect(function () {
-        Validate.isRegExp(data);
+        Validate.assertRegExp(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isRegExp()", function () {
+  describe("#assertRegExp()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isRegExp(null);
+        Validate.assertRegExp(null);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isString()", function () {
+  describe("#assertString()", function () {
     it("does not throw an error", function () {
 
       var data = "1000";
 
       expect(function () {
-        Validate.isString(data);
+        Validate.assertString(data);
       }).not.to.throw();
 
     });
 
   });
 
-    describe("#isString()", function () {
+    describe("#assertString()", function () {
         it("does not throw an error due to string match", function () {
 
             var data = new String("testing123");
 
             expect(function () {
-                Validate.isString(data, "testing123");
+                Validate.assertString(data, "testing123");
             }).not.to.throw();
 
         });
 
     });
 
-    describe("#isString()", function () {
+    describe("#assertString()", function () {
     it("does not throw an error due to string match", function () {
 
       var data = "testing123";
 
       expect(function () {
-        Validate.isString(data, "testing123");
+        Validate.assertString(data, "testing123");
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isString()", function () {
+  describe("#assertString()", function () {
     it("throws an error", function () {
 
       var data = 1000;
 
       expect(function () {
-        Validate.isString(data);
+        Validate.assertString(data);
       }).to.throw();
 
     });
 
   });
 
-  describe("#isString()", function () {
+  describe("#assertString()", function () {
     it("throws an error due to no string match", function () {
 
       var data = "testing123";
 
       expect(function () {
-        Validate.isString(data, "testing456");
+        Validate.assertString(data, "testing456");
       }).to.throw();
 
     });
 
   });
 
-  describe("#isString()", function () {
+  describe("#assertString()", function () {
     it("throws an error due to RegEx mismatch", function () {
 
       var data = "fdifi";
 
       expect(function () {
-        Validate.isString(data, new RegExp("/(^d{5}$)/"));
+        Validate.assertString(data, new RegExp("/(^d{5}$)/"));
       }).to.throw();
 
     });
 
   });
 
-  describe("#isString()", function () {
+  describe("#assertString()", function () {
     it("does not throw an error due to RegEx match", function () {
 
       var data = "12345";
 
       expect(function () {
-        Validate.isString(data, /(^\d{5}$)/);
+        Validate.assertString(data, /(^\d{5}$)/);
       }).not.to.throw();
 
     });
 
   });
 
-  describe("#isString()", function () {
+  describe("#assertString()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
-        Validate.isString(null);
+        Validate.assertString(null);
+      }).to.throw();
+
+    });
+
+  });
+
+  describe("#assertVariant()", function () {
+    it("throws an error on incorrect", function () {
+
+      expect(function () {
+        Validate.assertVariant("testing123", Validate.assertString, Validate.assertArray);
+      }).to.not.throw();
+
+      expect(function () {
+        Validate.assertVariant(["testing123"], Validate.assertString, Validate.assertArray);
+      }).to.not.throw();
+
+      expect(function () {
+        Validate.assertVariant(123, Validate.assertString, Validate.assertArray);
       }).to.throw();
 
     });
