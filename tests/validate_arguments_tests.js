@@ -162,20 +162,31 @@ describe("Validate", function () {
 
   });
 
-    describe("#assertBoolean()", function () {
-        it("does not throw an error", function () {
+  describe("#assertArray()", function () {
+    it("does not throw an error on null", function () {
 
-            var data = new Boolean(true);
-
-            expect(function () {
-                Validate.assertBoolean(data);
-            }).not.to.throw();
-
-        });
+      expect(function () {
+        Validate.assertArray(null, true);
+      }).to.not.throw();
 
     });
 
-    describe("#assertBoolean()", function () {
+  });
+
+  describe("#assertBoolean()", function () {
+      it("does not throw an error", function () {
+
+          var data = new Boolean(true);
+
+          expect(function () {
+              Validate.assertBoolean(data);
+          }).not.to.throw();
+
+      });
+
+  });
+
+  describe("#assertBoolean()", function () {
     it("does not throw an error", function () {
 
       var data = true;
@@ -251,6 +262,17 @@ describe("Validate", function () {
 
   });
 
+  describe("#assertBoolean()", function () {
+    it("does not throw an error on null", function () {
+
+      expect(function () {
+        Validate.assertBoolean(null, true);
+      }).to.not.throw();
+
+    });
+
+  });
+
   describe("#assertBuffer()", function () {
     it("does not throw an error", function () {
 
@@ -317,6 +339,17 @@ describe("Validate", function () {
 
   });
 
+  describe("#assertBuffer()", function () {
+    it("does not throw an error on null", function () {
+
+      expect(function () {
+        Validate.assertBuffer(null, true);
+      }).to.not.throw();
+
+    });
+
+  });
+
   describe("#assertDate()", function () {
     it("does not throw an error", function () {
 
@@ -349,6 +382,17 @@ describe("Validate", function () {
       expect(function () {
         Validate.assertDate(null);
       }).to.throw();
+
+    });
+
+  });
+
+  describe("#assertDate()", function () {
+    it("does not throw an error on null", function () {
+
+      expect(function () {
+        Validate.assertDate(null, true);
+      }).to.not.throw();
 
     });
 
@@ -428,6 +472,17 @@ describe("Validate", function () {
 
   });
 
+  describe("#assertError()", function () {
+    it("does not throw an error on null", function () {
+
+      expect(function () {
+        Validate.assertError(null, true);
+      }).to.not.throw();
+
+    });
+
+  });
+
   describe("#assertFunction()", function () {
     it("does not throw an error", function () {
 
@@ -461,6 +516,17 @@ describe("Validate", function () {
       expect(function () {
         Validate.assertFunction(null);
       }).to.throw();
+
+    });
+
+  });
+
+  describe("#assertFunction()", function () {
+    it("does not throw an error on null", function () {
+
+      expect(function () {
+        Validate.assertFunction(null, true);
+      }).to.not.throw();
 
     });
 
@@ -503,39 +569,37 @@ describe("Validate", function () {
 
   });
 
-    describe("#assertNumber()", function () {
-        it("does not throw an error", function () {
-
-            var data = new Number(123);
-
-            expect(function () {
-                Validate.assertNumber(data);
-            }).not.to.throw();
-
-        });
-
-    });
-
-    describe("#assertNumber()", function () {
-    it("does not throw an error", function () {
-
-      var data = 123;
+  describe("#assertInstance()", function () {
+    it("does not throw an error on null", function () {
 
       expect(function () {
-        Validate.assertNumber(data);
-      }).not.to.throw();
+        Validate.assertInstance(null, Date, true);
+      }).to.not.throw();
 
     });
 
   });
 
   describe("#assertNumber()", function () {
-    it("does not throw an error within range", function () {
+      it("does not throw an error", function () {
 
-      var data = 10;
+          var data = new Number(123);
+
+          expect(function () {
+              Validate.assertNumber(data);
+          }).not.to.throw();
+
+      });
+
+  });
+
+  describe("#assertNumber()", function () {
+    it("does not throw an error", function () {
+
+      var data = 123;
 
       expect(function () {
-        Validate.assertNumber(data, -100, 20);
+        Validate.assertNumber(data);
       }).not.to.throw();
 
     });
@@ -556,32 +620,6 @@ describe("Validate", function () {
   });
 
   describe("#assertNumber()", function () {
-    it("throws an error out of range high", function () {
-
-      var data = 11;
-
-      expect(function () {
-        Validate.assertNumber(data, 1, 10);
-      }).to.throw();
-
-    });
-
-  });
-
-  describe("#assertNumber()", function () {
-    it("throws an error out of range low", function () {
-
-      var data = 0;
-
-      expect(function () {
-        Validate.assertNumber(data, 1, 10);
-      }).to.throw();
-
-    });
-
-  });
-
-  describe("#assertNumber()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
@@ -592,22 +630,33 @@ describe("Validate", function () {
 
   });
 
-    describe("#assertObject()", function () {
-        it("does not throw an error", function () {
+  describe("#assertNumber()", function () {
+    it("does not throw an error on null", function () {
 
-            var data = new Object();
-            data.name = "David";
-            data.age = 45;
-
-            expect(function () {
-                Validate.assertObject(data);
-            }).not.to.throw();
-
-        });
+      expect(function () {
+        Validate.assertNumber(null, true);
+      }).to.not.throw();
 
     });
 
-    describe("#assertObject()", function () {
+  });
+
+  describe("#assertObject()", function () {
+      it("does not throw an error", function () {
+
+          var data = new Object();
+          data.name = "David";
+          data.age = 45;
+
+          expect(function () {
+              Validate.assertObject(data);
+          }).not.to.throw();
+
+      });
+
+  });
+
+  describe("#assertObject()", function () {
     it("does not throw an error", function () {
 
       var data = {name: "David", age: 45};
@@ -669,6 +718,28 @@ describe("Validate", function () {
 
   });
 
+  describe("#assertObject()", function () {
+    it("does not throw an error on null", function () {
+
+      expect(function () {
+        Validate.assertObject(null, true);
+      }).to.not.throw();
+
+    });
+
+  });
+
+  describe("#assertObject()", function () {
+    it("does not throw an error on null", function () {
+
+      expect(function () {
+        Validate.assertObject(null, true);
+      }).to.not.throw();
+
+    });
+
+  });
+
   describe("#assertRegExp()", function () {
     it("does not throw an error", function () {
 
@@ -706,6 +777,17 @@ describe("Validate", function () {
 
   });
 
+  describe("#assertRegExp()", function () {
+    it("does not throw an error on null", function () {
+
+      expect(function () {
+        Validate.assertRegExp(null, true);
+      }).to.not.throw();
+
+    });
+
+  });
+
   describe("#assertString()", function () {
     it("does not throw an error", function () {
 
@@ -719,20 +801,20 @@ describe("Validate", function () {
 
   });
 
-    describe("#assertString()", function () {
-        it("does not throw an error due to string match", function () {
+  describe("#assertString()", function () {
+      it("does not throw an error due to string match", function () {
 
-            var data = new String("testing123");
+          var data = new String("testing123");
 
-            expect(function () {
-                Validate.assertString(data, "testing123");
-            }).not.to.throw();
+          expect(function () {
+              Validate.assertString(data, "testing123");
+          }).not.to.throw();
 
-        });
+      });
 
-    });
+  });
 
-    describe("#assertString()", function () {
+  describe("#assertString()", function () {
     it("does not throw an error due to string match", function () {
 
       var data = "testing123";
@@ -759,50 +841,22 @@ describe("Validate", function () {
   });
 
   describe("#assertString()", function () {
-    it("throws an error due to no string match", function () {
-
-      var data = "testing123";
-
-      expect(function () {
-        Validate.assertString(data, "testing456");
-      }).to.throw();
-
-    });
-
-  });
-
-  describe("#assertString()", function () {
-    it("throws an error due to RegEx mismatch", function () {
-
-      var data = "fdifi";
-
-      expect(function () {
-        Validate.assertString(data, new RegExp("/(^d{5}$)/"));
-      }).to.throw();
-
-    });
-
-  });
-
-  describe("#assertString()", function () {
-    it("does not throw an error due to RegEx match", function () {
-
-      var data = "12345";
-
-      expect(function () {
-        Validate.assertString(data, /(^\d{5}$)/);
-      }).not.to.throw();
-
-    });
-
-  });
-
-  describe("#assertString()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
         Validate.assertString(null);
       }).to.throw();
+
+    });
+
+  });
+
+  describe("#assertString()", function () {
+    it("does not throw an error on null", function () {
+
+      expect(function () {
+        Validate.assertString(null, true);
+      }).to.not.throw();
 
     });
 
@@ -827,4 +881,14 @@ describe("Validate", function () {
 
   });
 
+  describe("#assertVariant()", function () {
+    it("does not throw an error on null", function () {
+
+      expect(function () {
+        Validate.assertVariant(null, true, Validate.assertString, Validate.assertArray);
+      }).to.not.throw();
+
+    });
+
+  });
 });

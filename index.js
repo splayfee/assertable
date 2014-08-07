@@ -16,6 +16,10 @@ var class2type = {};
  });
 
 
+var Validate = {};
+module.exports = Validate;
+
+
 /**
  * Safer way to determine the actual type of a value.
  * @param {*} value The value to test.
@@ -41,7 +45,7 @@ function _parseValue(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isArray = function(value) {
+Validate.isArray = function(value) {
   return (Array.isArray(value));
 };
 
@@ -50,7 +54,7 @@ module.exports.isArray = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isBoolean = function(value) {
+Validate.isBoolean = function(value) {
   return (_getType(value) === "boolean");
 };
 
@@ -59,7 +63,7 @@ module.exports.isBoolean = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isBuffer = function(value) {
+Validate.isBuffer = function(value) {
   return (Buffer.isBuffer(value));
 };
 
@@ -68,7 +72,7 @@ module.exports.isBuffer = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isDate = function(value) {
+Validate.isDate = function(value) {
   return (_getType(value) === "date");
 };
 
@@ -77,7 +81,7 @@ module.exports.isDate = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isDefined = function(value) {
+Validate.isDefined = function(value) {
   return (value !== null && value !== undefined);
 };
 
@@ -86,7 +90,7 @@ module.exports.isDefined = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isError = function(value) {
+Validate.isError = function(value) {
   return (_getType(value) === "error");
 };
 
@@ -95,7 +99,7 @@ module.exports.isError = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isFunction = function(value) {
+Validate.isFunction = function(value) {
   return (_getType(value) === "function");
 };
 
@@ -104,7 +108,7 @@ module.exports.isFunction = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isNumber = function(value) {
+Validate.isNumber = function(value) {
   return (_getType(value) === "number");
 };
 
@@ -113,7 +117,7 @@ module.exports.isNumber = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isObject = function(value) {
+Validate.isObject = function(value) {
   return (_getType(value) === "object");
 };
 
@@ -122,7 +126,7 @@ module.exports.isObject = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isRegExp = function(value) {
+Validate.isRegExp = function(value) {
   return (_getType(value) === "regexp");
 };
 
@@ -131,15 +135,21 @@ module.exports.isRegExp = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-module.exports.isString = function(value) {
+Validate.isString = function(value) {
   return (_getType(value) === "string");
 };
 
 /**
  * Asserts that the value is an array.
  * @param {Array} value The value to test.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  */
-module.exports.assertArray = function (value) {
+Validate.assertArray = function (value, ignoreUndefined) {
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
   var error;
   if (!Array.isArray(value)) {
     error = new TypeError("AssertArray: value '" + _parseValue(value) + "' is not an array");
@@ -150,8 +160,14 @@ module.exports.assertArray = function (value) {
 /**
  * Asserts that the value is boolean.
  * @param {Boolean} value The value to test.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  */
-module.exports.assertBoolean = function (value) {
+Validate.assertBoolean = function (value, ignoreUndefined) {
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
   var error;
   if (_getType(value) !== "boolean") {
     error = new TypeError("AssertBoolean: value '" + _parseValue(value) + "' is not a boolean");
@@ -162,12 +178,23 @@ module.exports.assertBoolean = function (value) {
 /**
  * Asserts that the value is a buffer.
  * @param {Buffer} value The value to test.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  * @param {Number} [length] The required length of the buffer, This value is optional.
  */
-module.exports.assertBuffer = function (value, length) {
+Validate.assertBuffer = function (value, ignoreUndefined, length) {
+
+  if (Validate.isNumber(ignoreUndefined)) {
+    length = ignoreUndefined;
+    ignoreUndefined = undefined;
+  }
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
   var error;
 
-  length = module.exports.setDefault(length, 0);
+  length = Validate.setDefault(length, 0);
 
   if (!Buffer.isBuffer(value)) {
     error = new TypeError("AssertBuffer: value '" + _parseValue(value) + "' is not a buffer");
@@ -181,20 +208,32 @@ module.exports.assertBuffer = function (value, length) {
 /**
  * Asserts that the value is a date.
  * @param {Date} value The value to test.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  */
-module.exports.assertDate = function (value) {
-    var error;
-    if (_getType(value) !== "date") {
-        error = new TypeError("AssertBuffer: value '" + _parseValue(value) + "' is not a date");
-        throw error;
-    }
+Validate.assertDate = function (value, ignoreUndefined) {
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
+  var error;
+  if (_getType(value) !== "date") {
+      error = new TypeError("AssertBuffer: value '" + _parseValue(value) + "' is not a date");
+      throw error;
+  }
 };
 
 /**
  * Asserts that the value is is defined.
  * @param {*} value The value to test.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  */
-module.exports.assertDefined = function (value) {
+Validate.assertDefined = function (value, ignoreUndefined) {
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
   var error;
   if (value === null || value === undefined) {
     error = new TypeError("AssertDefined: value is not defined");
@@ -205,9 +244,15 @@ module.exports.assertDefined = function (value) {
 /**
  * Asserts that the value is an error.
  * @param {Error} value The value to test.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  */
-module.exports.assertError = function (value) {
-    var error;
+Validate.assertError = function (value, ignoreUndefined) {
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
+  var error;
     if (_getType(value) !== "error") {
         error = new TypeError("AssertError: value '" + _parseValue(value) + "' is not an Error");
         throw error;
@@ -217,8 +262,14 @@ module.exports.assertError = function (value) {
 /**
  * Asserts that the value is a function.
  * @param {Function} value The value to test.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  */
-module.exports.assertFunction = function (value) {
+Validate.assertFunction = function (value, ignoreUndefined) {
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
   var error;
   if (!value || _getType(value) !== "function") {
     error = new TypeError("AssertFunction: value '" + _parseValue(value) + "' is not a function");
@@ -230,8 +281,14 @@ module.exports.assertFunction = function (value) {
  * Asserts that the value is an instance.
  * @param {Object} value The value to test.
  * @param {Function} constructorFunction A constructor function.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  */
-module.exports.assertInstance = function (value, constructorFunction) {
+Validate.assertInstance = function (value, constructorFunction, ignoreUndefined) {
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
   var error;
   if (!(value instanceof constructorFunction)) {
     error = new TypeError("AssertInstance: value is not an instance of '" + constructorFunction.name + "'");
@@ -242,16 +299,17 @@ module.exports.assertInstance = function (value, constructorFunction) {
 /**
  * Asserts that the value is a number; the value is optionally range-checked (inclusive).
  * @param {Number} value The value to test.
- * @param {Number} [low] The lowest acceptable value.
- * @param {Number} [high] The highest acceptable value; if omitted, there is no upper limit.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  */
-module.exports.assertNumber = function (value, low, high) {
+Validate.assertNumber = function (value, ignoreUndefined) {
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
   var error;
   if (_getType(value) !== "number") {
     error = new TypeError("AssertNumber: value '" + _parseValue(value) + "' is not a number");
-    throw error;
-  } else if ((low !== undefined && value < low) || (high !== undefined && value > high)) {
-    error = new RangeError("AssertNumber: value '" + _parseValue(value) + "' is out of range");
     throw error;
   }
 };
@@ -260,8 +318,16 @@ module.exports.assertNumber = function (value, low, high) {
  * Asserts that the value is an object; value is optionally property name checked.
  * @param {Object} value The value to test.
  * @param {...String} [requiredProperties] A list of property names that <b>must</b> be defined in <code>value</code>.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  */
-module.exports.assertObject = function (value, requiredProperties) {
+Validate.assertObject = function (value, ignoreUndefined, requiredProperties) {
+
+  if (Validate.isBoolean(ignoreUndefined)) {
+    if (ignoreUndefined && !Validate.isDefined(value)) {
+      return;
+    }
+  }
+
   var error;
   if (!value || _getType(value) !== "object") {
     error = new TypeError("AssertObject: value '" + _parseValue(value) + "' is not an object");
@@ -279,46 +345,63 @@ module.exports.assertObject = function (value, requiredProperties) {
 /**
  * Asserts that the value is is a RegExp.
  * @param {RegExp} value The value to test.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
  */
-module.exports.assertRegExp = function (value) {
-    var error;
-    if (_getType(value) !== "regexp") {
-        error = new TypeError("AssertRegExp: value '" + _parseValue(value) + "' is not a RegExp");
-        throw error;
-    }
+Validate.assertRegExp = function (value, ignoreUndefined) {
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
+  var error;
+  if (_getType(value) !== "regexp") {
+      error = new TypeError("AssertRegExp: value '" + _parseValue(value) + "' is not a RegExp");
+      throw error;
+  }
 };
 
 /**
  * Asserts that the value is a string; value is optionally value-checked.
  * @param {String} value The value to test.
- * @param {...String|RegExp} [values] <code>value</code> <b>must</b> be one of the listed values or match the regex.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Number} [length] The required length of the buffer, This value is optional.
  */
-module.exports.assertString = function (value, values) {
+Validate.assertString = function (value, ignoreUndefined, length) {
+
+  if (Validate.isNumber(ignoreUndefined)) {
+    length = ignoreUndefined;
+    ignoreUndefined = undefined;
+  }
+
+  if (ignoreUndefined && !Validate.isDefined(value)) {
+    return;
+  }
+
+  length = Validate.setDefault(length, 0);
+
   var error;
   if (_getType(value) !== "string") {
     error = new TypeError("AssertString: value '" + _parseValue(value) + "' is not a string");
     throw error;
-  } else if (values) {
-     value = value.toString();
-    if (values instanceof RegExp) {
-      if (!values.test(value)) {
-        error = new TypeError("AssertString: value '" + _parseValue(value) + "' does not match the Regular Expression");
-        throw error;
-      }
-    } else if (Array.prototype.slice.call(arguments, 1).indexOf(value) === -1) {
-      error = new TypeError("AssertString: value '" + _parseValue(value) + "' does not match supplied list values");
-      throw error;
-    }
+  } else if (length > 0 && value.length !== length) {
+    error = new RangeError("AssertString: string length is out of range");
+    throw error;
   }
-
 };
 
 /**
  * Asserts that the value is a variant.
  * @param {*} value The value to test.
- * @param {...Function} arguments One or more assert functions.
+ * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {...Function} assertFunctions arguments One or more assert functions.
  */
-module.exports.assertVariant = function(value) {
+Validate.assertVariant = function(value, ignoreUndefined, assertFunctions) {
+
+  if (Validate.isBoolean(ignoreUndefined)) {
+    if (ignoreUndefined && !Validate.isDefined(value)) {
+      return;
+    }
+  }
 
   var passedOneCheck = false;
   var checks = Array.prototype.slice.call(arguments, 1);
@@ -346,6 +429,6 @@ module.exports.assertVariant = function(value) {
  * @param {*} defValue The default value to return if value is not set.
  * @returns {*}
  */
-module.exports.setDefault = function (value, defValue) {
+Validate.setDefault = function (value, defValue) {
   return value !== null && value !== undefined ? value : defValue;
 };

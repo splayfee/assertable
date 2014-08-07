@@ -14,12 +14,13 @@ Note - this is just one way to develop using Javascript and some developers pref
  	- **Errors**
  	- **Functions**
  	- **Instances**
- 	- **Numbers**, including optional range
+ 	- **Numbers**
  	- **Objects**, including optional required parameters
  	- **RegExps**
- 	- **Strings**, including optional RegEx match or list matching
+ 	- **Strings**, including optional length
  	- **Variants**, allows for checking one or more of the above
 
+ - Optionally, each test may pass an assert if the value is null or undefined.
  - Provide default values for arguments that is safe to use with ```0``` and ```false```
 
 ## Installation
@@ -38,7 +39,7 @@ Once you have reference you can type-check your arguments within functions:
 
 ```javascript
 function doSomeWork(someArray, someBoolean, someBuffer, someFunction) {
-	Validate.assertArray(someArray);
+	Validate.assertArray(someArray, true); // May be null or undefined.
 	Validate.assertBoolean(someBoolean);
 	Validate.assertBuffer(someBuffer, 200); // requires a minimum for 200 bytes
 	Validate.assertFunction( someFunction );
@@ -49,10 +50,9 @@ function doSomeWork(someArray, someBoolean, someBuffer, someFunction) {
 
 function doSomeWork(someClass, someNumber, someObject, someString) {
 	Validate.assertFunction(someFunction);
-	Validate.assertClass(SomeClass);
-	Validate.assertNumber(someNumber, 1, 10); // validates a number within range from 1 to 10.
+	Validate.assertNumber(someNumber);
 	Validate.assertObject(someObject, "property1", "property2"); // Validates an object and the supplied properties.
-	Validate.assertString(someString, /(^\d{5}$)/); // Validate against the regular expression.
+	Validate.assertString(someString, 10) // Validates a string of length 10
 
     // Safely do some work.
 
