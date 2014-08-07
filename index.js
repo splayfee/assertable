@@ -142,11 +142,11 @@ Validate.isString = function(value) {
 /**
  * Asserts that the value is an array.
  * @param {Array} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Validate.assertArray = function (value, ignoreUndefined) {
+Validate.assertArray = function (value, allowNullOrUndefined) {
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -160,11 +160,11 @@ Validate.assertArray = function (value, ignoreUndefined) {
 /**
  * Asserts that the value is boolean.
  * @param {Boolean} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Validate.assertBoolean = function (value, ignoreUndefined) {
+Validate.assertBoolean = function (value, allowNullOrUndefined) {
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -178,17 +178,17 @@ Validate.assertBoolean = function (value, ignoreUndefined) {
 /**
  * Asserts that the value is a buffer.
  * @param {Buffer} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  * @param {Number} [length] The required length of the buffer, This value is optional.
  */
-Validate.assertBuffer = function (value, ignoreUndefined, length) {
+Validate.assertBuffer = function (value, allowNullOrUndefined, length) {
 
-  if (Validate.isNumber(ignoreUndefined)) {
-    length = ignoreUndefined;
-    ignoreUndefined = undefined;
+  if (Validate.isNumber(allowNullOrUndefined)) {
+    length = allowNullOrUndefined;
+    allowNullOrUndefined = undefined;
   }
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -208,11 +208,11 @@ Validate.assertBuffer = function (value, ignoreUndefined, length) {
 /**
  * Asserts that the value is a date.
  * @param {Date} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Validate.assertDate = function (value, ignoreUndefined) {
+Validate.assertDate = function (value, allowNullOrUndefined) {
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -226,11 +226,11 @@ Validate.assertDate = function (value, ignoreUndefined) {
 /**
  * Asserts that the value is is defined.
  * @param {*} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Validate.assertDefined = function (value, ignoreUndefined) {
+Validate.assertDefined = function (value, allowNullOrUndefined) {
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -244,11 +244,11 @@ Validate.assertDefined = function (value, ignoreUndefined) {
 /**
  * Asserts that the value is an error.
  * @param {Error} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Validate.assertError = function (value, ignoreUndefined) {
+Validate.assertError = function (value, allowNullOrUndefined) {
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -262,11 +262,11 @@ Validate.assertError = function (value, ignoreUndefined) {
 /**
  * Asserts that the value is a function.
  * @param {Function} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Validate.assertFunction = function (value, ignoreUndefined) {
+Validate.assertFunction = function (value, allowNullOrUndefined) {
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -281,11 +281,11 @@ Validate.assertFunction = function (value, ignoreUndefined) {
  * Asserts that the value is an instance.
  * @param {Object} value The value to test.
  * @param {Function} constructorFunction A constructor function.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Validate.assertInstance = function (value, constructorFunction, ignoreUndefined) {
+Validate.assertInstance = function (value, constructorFunction, allowNullOrUndefined) {
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -299,11 +299,11 @@ Validate.assertInstance = function (value, constructorFunction, ignoreUndefined)
 /**
  * Asserts that the value is a number; the value is optionally range-checked (inclusive).
  * @param {Number} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Validate.assertNumber = function (value, ignoreUndefined) {
+Validate.assertNumber = function (value, allowNullOrUndefined) {
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -318,12 +318,12 @@ Validate.assertNumber = function (value, ignoreUndefined) {
  * Asserts that the value is an object; value is optionally property name checked.
  * @param {Object} value The value to test.
  * @param {...String} [requiredProperties] A list of property names that <b>must</b> be defined in <code>value</code>.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Validate.assertObject = function (value, ignoreUndefined, requiredProperties) {
+Validate.assertObject = function (value, allowNullOrUndefined, requiredProperties) {
 
-  if (Validate.isBoolean(ignoreUndefined)) {
-    if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (Validate.isBoolean(allowNullOrUndefined)) {
+    if (allowNullOrUndefined && !Validate.isDefined(value)) {
       return;
     }
   }
@@ -345,11 +345,11 @@ Validate.assertObject = function (value, ignoreUndefined, requiredProperties) {
 /**
  * Asserts that the value is is a RegExp.
  * @param {RegExp} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Validate.assertRegExp = function (value, ignoreUndefined) {
+Validate.assertRegExp = function (value, allowNullOrUndefined) {
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -363,17 +363,17 @@ Validate.assertRegExp = function (value, ignoreUndefined) {
 /**
  * Asserts that the value is a string; value is optionally value-checked.
  * @param {String} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  * @param {Number} [length] The required length of the buffer, This value is optional.
  */
-Validate.assertString = function (value, ignoreUndefined, length) {
+Validate.assertString = function (value, allowNullOrUndefined, length) {
 
-  if (Validate.isNumber(ignoreUndefined)) {
-    length = ignoreUndefined;
-    ignoreUndefined = undefined;
+  if (Validate.isNumber(allowNullOrUndefined)) {
+    length = allowNullOrUndefined;
+    allowNullOrUndefined = undefined;
   }
 
-  if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (allowNullOrUndefined && !Validate.isDefined(value)) {
     return;
   }
 
@@ -392,13 +392,13 @@ Validate.assertString = function (value, ignoreUndefined, length) {
 /**
  * Asserts that the value is a variant.
  * @param {*} value The value to test.
- * @param {Boolean} [ignoreUndefined] Flag that instructs the system to not assert on null/undefined.
+ * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  * @param {...Function} assertFunctions arguments One or more assert functions.
  */
-Validate.assertVariant = function(value, ignoreUndefined, assertFunctions) {
+Validate.assertVariant = function(value, allowNullOrUndefined, assertFunctions) {
 
-  if (Validate.isBoolean(ignoreUndefined)) {
-    if (ignoreUndefined && !Validate.isDefined(value)) {
+  if (Validate.isBoolean(allowNullOrUndefined)) {
+    if (allowNullOrUndefined && !Validate.isDefined(value)) {
       return;
     }
   }
