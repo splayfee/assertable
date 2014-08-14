@@ -44,7 +44,7 @@ gulp.task("lint", function() {
     .pipe(eslint())
     .pipe(eslint.format("stylish", console.error));
 
-  gulp.src("./pacakge.json")
+  gulp.src("./package.json")
     .pipe(jsonlint())
     .pipe(jsonlint.reporter("stylish", console.error));
 });
