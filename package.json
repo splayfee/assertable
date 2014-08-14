@@ -1,35 +1,40 @@
 {
   "name": "qa-validate-arguments",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Test for type/existence of method arguments before they can cause problems deeper down the stack.",
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "https://interactive-git.apple.com/interactive-qa-fe/qa-validate-arguments"
-    },
-    "scripts": {
-        "test": "./node_modules/mocha/bin/mocha ."
-    },
-    "keywords": [
-     "validator",
-     "tool",
-     "arguments",
-     "method",
-     "function",
-     "test",
-      "marcom",
-      "qa-tools"
-   ],
-  "author": "David LaTour <david@edium.com>",
-  "license": "LICENSE-APPLE",
-  "dependencies": {
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://interactive-git.apple.com/interactive-qa-fe/qa-validate-arguments.git"
   },
+  "scripts": {
+    "test": "gulp"
+  },
+  "keywords": [
+    "validator",
+    "tool",
+    "arguments",
+    "method",
+    "function",
+    "test",
+    "marcom",
+    "qa-tools"
+  ],
+  "homepage": "https://interactive-git.apple.com/interactive-qa-fe/qa-validate-arguments",
+  "author": "David LaTour <david@edium.com>",
+  "license": "APPLE",
+  "dependencies": {},
   "devDependencies": {
     "chai": "^1.9.1",
-    "eslint": "^0.7.4",
-    "mocha": "^1.18.2"
+    "del": "^0.1.1",
+    "gulp": "^3.8.6",
+    "gulp-eslint": "^0.1.8",
+    "gulp-istanbul": "^0.2.0",
+    "gulp-jsonlint": "0.0.3",
+    "gulp-mocha": "^0.5.0",
+    "run-sequence": "^0.3.6"
   },
-    "publishConfig": {
-        "registry": "https://npm.interactive-apps.apple.com"
-    }
+  "publishConfig": {
+    "registry": "https://npm.interactive-apps.apple.com/"
+  }
 }
