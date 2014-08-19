@@ -322,18 +322,20 @@ Validate.assertNumber = function (value, allowNullOrUndefined) {
  */
 Validate.assertObject = function (value, allowNullOrUndefined, requiredProperties) {
 
+  var startIndex = 1;
   if (Validate.isBoolean(allowNullOrUndefined)) {
     if (allowNullOrUndefined && !Validate.isDefined(value)) {
       return;
     }
+    startIndex = 2;
   }
 
   var error;
   if (!value || _getType(value) !== "object") {
     error = new TypeError("AssertObject: value '" + _parseValue(value) + "' is not an object");
     throw error;
-  } else if (arguments.length > 1) {
-    Array.prototype.slice.call(arguments, 1).forEach(function (p) {
+  } else if (arguments.length > startIndex ) {
+    Array.prototype.slice.call(arguments, startIndex).forEach(function (p) {
       if (value[p] === undefined) {
         error = new TypeError("AssertObject: value '" + _parseValue(value) + "' is missing required properties");
         throw error;
@@ -370,7 +372,7 @@ Validate.assertString = function (value, allowNullOrUndefined, length) {
 
   if (Validate.isNumber(allowNullOrUndefined)) {
     length = allowNullOrUndefined;
-    allowNullOrUndefined = undefined;
+    allowNullOrUndefined = false;
   }
 
   if (allowNullOrUndefined && !Validate.isDefined(value)) {
@@ -397,14 +399,16 @@ Validate.assertString = function (value, allowNullOrUndefined, length) {
  */
 Validate.assertVariant = function(value, allowNullOrUndefined, assertFunctions) {
 
+  var startIndex = 1;
   if (Validate.isBoolean(allowNullOrUndefined)) {
     if (allowNullOrUndefined && !Validate.isDefined(value)) {
       return;
     }
+    startIndex = 2;
   }
 
   var passedOneCheck = false;
-  var checks = Array.prototype.slice.call(arguments, 1);
+  var checks = Array.prototype.slice.call(arguments, startIndex);
   var errorMessage = "";
 
   checks.forEach( function(assert) {

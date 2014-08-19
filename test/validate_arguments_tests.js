@@ -710,6 +710,45 @@ describe("Validate", function () {
   });
 
   describe("#assertObject()", function () {
+    it("does not throw an error due to missing property", function () {
+
+      var data = {name: "David", age: 45};
+
+      expect(function () {
+        Validate.assertObject(data, "name", "age");
+      }).to.not.throw();
+
+    });
+
+  });
+
+  describe("#assertObject()", function () {
+    it("throws an error due to missing property and set to optional", function () {
+
+      var data = {name: "David", age: 45};
+
+      expect(function () {
+        Validate.assertObject(data, true, "birthday");
+      }).to.throw();
+
+    });
+
+  });
+
+  describe("#assertObject()", function () {
+    it("does not throw an error due to missing property and set to optional", function () {
+
+      var data = {name: "David", age: 45};
+
+      expect(function () {
+        Validate.assertObject(data, true, "name", "age");
+      }).to.not.throw();
+
+    });
+
+  });
+
+  describe("#assertObject()", function () {
     it("throws an error on null", function () {
 
       expect(function () {
