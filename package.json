@@ -16,9 +16,7 @@
     "arguments",
     "method",
     "function",
-    "test",
-    "marcom",
-    "qa-tools"
+    "test"
   ],
   "homepage": "https://interactive-git.apple.com/interactive-qa-fe/qa-validate-arguments",
   "author": "David LaTour <david@edium.com>",
