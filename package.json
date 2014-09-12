@@ -1,11 +1,14 @@
 {
   "name": "qa-validate-arguments",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "Test for type/existence of method arguments before they can cause problems deeper down the stack.",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://interactive-git.apple.com/interactive-qa-fe/qa-validate-arguments.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.sd.apple.com/interactive-qa-tools/qa-validate-arguments/issues"
   },
   "scripts": {
     "test": "gulp"
