@@ -1,6 +1,6 @@
-#  Validate Arguments
+#  Fail Fast
 ## Overview
-**Validate Arguments** lets developers employ defensive programming techniques in their **Node.js** applications. Since Javascript provides dynamic typing it is often possible to generate errors that are difficult to debug by providing one or more methods with incorrect or missing arguments. **Validate Arguments** allows you to test for type/existence of method arguments before they can cause problems deeper down the stack.
+**FailFast** lets developers employ defensive programming techniques in their **Node.js** applications. Since Javascript provides dynamic typing it is often possible to generate errors that are difficult to debug by providing one or more methods with incorrect or missing arguments. **Fail Fast** allows you to test for type/existence of method arguments before they can cause problems deeper down the stack.
 
 Note - this is just one way to develop using Javascript and some developers prefer to shift the responsibility caller rather than enforce type within each method. As with anything it comes down to personal preference.
 
@@ -25,43 +25,43 @@ Note - this is just one way to develop using Javascript and some developers pref
 
 ## Installation
 
-	$ npm install qa-validate-arguments
+	$ npm install fail-fast
 
 ## Examples
 
 Begin by referencing the module:
 
 ```javascript
-var Validate = require("qa-validate-arguments");
+var Assert = require("fail-fast");
 ```
 
 Once you have reference you can type-check your arguments within functions:
 
 ```javascript
 function doSomeWork(someArray, someBoolean, someBuffer, someFunction) {
-	Validate.assertArray(someArray, true); // May be null or undefined.
-	Validate.assertBoolean(someBoolean);
-	Validate.assertBuffer(someBuffer, 200); // requires a minimum for 200 bytes
-	Validate.assertFunction( someFunction );
-	Validate.assertString(someString, /(^\d{5}$)/); // Validate against the regular expression.
+	Assert.array(someArray, true); // May be null or undefined.
+	Assert.boolean(someBoolean);
+	Assert.buffer(someBuffer, 200); // requires a minimum for 200 bytes
+	Assert.method( someFunction );
+	Assert.string(someString, /(^\d{5}$)/); // Validate against the regular expression.
 
     // Safely do some work.
 }
 
 function doSomeWork(someClass, someNumber, someObject, someString) {
-	Validate.assertFunction(someFunction);
-	Validate.assertNumber(someNumber);
-	Validate.assertObject(someObject, "property1", "property2"); // Validates an object and the supplied properties.
-	Validate.assertString(someString, 10) // Validates a string of length 10
+	Assert.method(someFunction);
+	Assert.number(someNumber);
+	Assert.object(someObject, "property1", "property2"); // Validates an object and the supplied properties.
+	Assert.string(someString, 10) // Validates a string of length 10
 
     // Safely do some work.
 
 }
 
 function doSomeWork(someDate, someError, someRegExp) {
-	Validate.assertDate(someDate);
-	Validate.assertError(someError);
-	Validate.assertRegExp(someRegExp);
+	Assert.date(someDate);
+	Assert.error(someError);
+	Assert.regExp(someRegExp);
 
 	// Safely do some work.
 }
@@ -69,12 +69,12 @@ function doSomeWork(someDate, someError, someRegExp) {
 It also works with variants. send it the value and and a list of asserts to use in the validation.
 ```javascript
 function doSomeWork(someVariant) {
-	Validate.assertVariant(someVariant, Validate.isArray, Validate.isString);
+	Assert.variant(someVariant, Assert.isArray, Assert.isString);
 
 	// Safely do some work
-    if (Validate.isString(someVariant)) {
+    if (Assert.isString(someVariant)) {
     	// It's a string
-    } else if(Validate.isArray(someVariant)) {
+    } else if(Assert.isArray(someVariant)) {
     	// It's an array.
     }
 }
@@ -82,13 +82,13 @@ function doSomeWork(someVariant) {
 You can implement variable function arity as well:
 ```javascript
 function doSomeWork(job, settings, callback) {
-	Validate.assertInstance(job, Job);
-  	if (Validate.isFunction(settings)) {
+	Assert.instance(job, Job);
+  	if (Assert.isFunction(settings)) {
 		callback = settings;
 		settings = {};
     }
-	Validate.assertObject(settings);
-	Validate.assertFunction(callback);
+	Assert.object(settings);
+	Assert.method(callback);
 
   // Safe to do some work
 }
@@ -100,15 +100,14 @@ Set argument defaults before validation:
 
 ```javascript
 function doSomeWork(someArray, someBoolean) {
-	someArray = Validate.setDefault(someArray, []);
-	someBoolean = Validate.setDefault(someArray, false);
+	someArray = Assert.setDefault(someArray, []);
+	someBoolean = Assert.setDefault(someArray, false);
     
-	Validate.isArray(someArray);
-	Validate.isBoolean(someBoolean);
+	Assert.isArray(someArray);
+	Assert.isBoolean(someBoolean);
 }
 ```
 
 ## License
 
 Copyright (c) 2014 Apple Inc. All rights reserved.
-

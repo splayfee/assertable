@@ -1,14 +1,14 @@
 {
-  "name": "qa-validate-arguments",
-  "version": "0.2.3",
+  "name": "fail-fast",
+  "version": "1.0.0",
   "description": "Test for type/existence of method arguments before they can cause problems deeper down the stack.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://interactive-git.apple.com/interactive-qa-fe/qa-validate-arguments.git"
+    "url": "https://gitlab.sd.apple.com/interactive-qa-tools/fail-fast.git"
   },
   "bugs": {
-    "url": "https://gitlab.sd.apple.com/interactive-qa-tools/qa-validate-arguments/issues"
+    "url": "https://gitlab.sd.apple.com/interactive-qa-tools/fail-fast/issues"
   },
   "scripts": {
     "test": "gulp"
@@ -21,7 +21,7 @@
     "function",
     "test"
   ],
-  "homepage": "https://interactive-git.apple.com/interactive-qa-fe/qa-validate-arguments",
+  "homepage": "https://gitlab.sd.apple.com/interactive-qa-tools/fail-fast",
   "author": "David LaTour <david@edium.com>",
   "license": "APPLE",
   "dependencies": {},
