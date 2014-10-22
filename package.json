@@ -1,6 +1,6 @@
 {
   "name": "fail-fast",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Test for type/existence of method arguments before they can cause problems deeper down the stack.",
   "main": "index.js",
   "repository": {
