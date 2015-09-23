@@ -3,17 +3,16 @@
 /**
  * @fileOverview Singleton utility functions
  * @author <a href="mailto:david@edium.com">dlatour</a>
- * @version 1.00.00
  */
 
-var util = require("util");
+var util = require( "util" );
 
 // Populate the class2type map
 var class2type = {};
-"Array Boolean Date Error Function Number Object RegExp String".split(" ").forEach(
-    function(name) {
-        class2type[ "[object " + name + "]" ] = name.toLowerCase();
- });
+"Array Boolean Date Error Function Number Object RegExp String".split( " " ).forEach(
+    function ( name ) {
+        class2type["[object " + name + "]"] = name.toLowerCase();
+    } );
 
 
 var Assert = {};
@@ -26,8 +25,8 @@ module.exports = Assert;
  * @returns {String} A string value indicating the type.
  * @private
  */
-function _getType(value) {
-    return class2type[Object.prototype.toString.call(value)];
+function _getType( value ) {
+    return class2type[Object.prototype.toString.call( value )];
 }
 
 /**
@@ -36,8 +35,8 @@ function _getType(value) {
  * @returns {String}
  * @private
  */
-function _parseValue(value) {
-  return util.inspect(value);
+function _parseValue( value ) {
+    return util.inspect( value );
 }
 
 /**
@@ -45,8 +44,8 @@ function _parseValue(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isArray = function(value) {
-  return (Array.isArray(value));
+Assert.isArray = function ( value ) {
+    return (Array.isArray( value ));
 };
 
 /**
@@ -54,8 +53,8 @@ Assert.isArray = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isBoolean = function(value) {
-  return (_getType(value) === "boolean");
+Assert.isBoolean = function ( value ) {
+    return (_getType( value ) === "boolean");
 };
 
 /**
@@ -63,8 +62,8 @@ Assert.isBoolean = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isBuffer = function(value) {
-  return (Buffer.isBuffer(value));
+Assert.isBuffer = function ( value ) {
+    return (Buffer.isBuffer( value ));
 };
 
 /**
@@ -72,8 +71,8 @@ Assert.isBuffer = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isDate = function(value) {
-  return (_getType(value) === "date");
+Assert.isDate = function ( value ) {
+    return (_getType( value ) === "date");
 };
 
 /**
@@ -81,8 +80,8 @@ Assert.isDate = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isDefined = function(value) {
-  return (value !== null && value !== undefined);
+Assert.isDefined = function ( value ) {
+    return (value !== null && value !== undefined);
 };
 
 /**
@@ -90,8 +89,8 @@ Assert.isDefined = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isError = function(value) {
-  return (_getType(value) === "error");
+Assert.isError = function ( value ) {
+    return (_getType( value ) === "error");
 };
 
 /**
@@ -99,8 +98,8 @@ Assert.isError = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isFunction = function(value) {
-  return (_getType(value) === "function");
+Assert.isFunction = function ( value ) {
+    return (_getType( value ) === "function");
 };
 
 /**
@@ -109,8 +108,8 @@ Assert.isFunction = function(value) {
  * @param {Function} constructorFunction A constructor function.
  * @returns {Boolean}
  */
-Assert.isInstance = function(value, constructorFunction) {
-  return (value instanceof constructorFunction);
+Assert.isInstance = function ( value, constructorFunction ) {
+    return (value instanceof constructorFunction);
 };
 
 /**
@@ -118,8 +117,8 @@ Assert.isInstance = function(value, constructorFunction) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isNumber = function(value) {
-  return (_getType(value) === "number");
+Assert.isNumber = function ( value ) {
+    return (_getType( value ) === "number");
 };
 
 /**
@@ -127,8 +126,8 @@ Assert.isNumber = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isObject = function(value) {
-  return (_getType(value) === "object");
+Assert.isObject = function ( value ) {
+    return (_getType( value ) === "object");
 };
 
 /**
@@ -136,8 +135,8 @@ Assert.isObject = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isRegExp = function(value) {
-  return (_getType(value) === "regexp");
+Assert.isRegExp = function ( value ) {
+    return (_getType( value ) === "regexp");
 };
 
 /**
@@ -145,8 +144,8 @@ Assert.isRegExp = function(value) {
  * @param {*} value The value to test.
  * @returns {Boolean}
  */
-Assert.isString = function(value) {
-  return (_getType(value) === "string");
+Assert.isString = function ( value ) {
+    return (_getType( value ) === "string");
 };
 
 /**
@@ -154,17 +153,17 @@ Assert.isString = function(value) {
  * @param {Array} value The value to test.
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Assert.array = function (value, allowNullOrUndefined) {
+Assert.array = function ( value, allowNullOrUndefined ) {
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  var error;
-  if (!Array.isArray(value)) {
-    error = new TypeError("AssertArray: value '" + _parseValue(value) + "' is not an array");
-    throw error;
-  }
+    var error;
+    if (!Array.isArray( value )) {
+        error = new TypeError( "AssertArray: value '" + _parseValue( value ) + "' is not an array" );
+        throw error;
+    }
 };
 
 /**
@@ -172,17 +171,17 @@ Assert.array = function (value, allowNullOrUndefined) {
  * @param {Boolean} value The value to test.
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Assert.boolean = function (value, allowNullOrUndefined) {
+Assert.boolean = function ( value, allowNullOrUndefined ) {
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  var error;
-  if (_getType(value) !== "boolean") {
-    error = new TypeError("AssertBoolean: value '" + _parseValue(value) + "' is not a boolean");
-    throw error;
-  }
+    var error;
+    if (_getType( value ) !== "boolean") {
+        error = new TypeError( "AssertBoolean: value '" + _parseValue( value ) + "' is not a boolean" );
+        throw error;
+    }
 };
 
 /**
@@ -191,28 +190,28 @@ Assert.boolean = function (value, allowNullOrUndefined) {
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  * @param {Number} [length] The required length of the buffer, This value is optional.
  */
-Assert.buffer = function (value, allowNullOrUndefined, length) {
+Assert.buffer = function ( value, allowNullOrUndefined, length ) {
 
-  if (Assert.isNumber(allowNullOrUndefined)) {
-    length = allowNullOrUndefined;
-    allowNullOrUndefined = undefined;
-  }
+    if (Assert.isNumber( allowNullOrUndefined )) {
+        length = allowNullOrUndefined;
+        allowNullOrUndefined = undefined;
+    }
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  var error;
+    var error;
 
-  length = Assert.setDefault(length, 0);
+    length = Assert.setDefault( length, 0 );
 
-  if (!Buffer.isBuffer(value)) {
-    error = new TypeError("AssertBuffer: value '" + _parseValue(value) + "' is not a buffer");
-    throw error;
-  } else if (length > 0 && value.length !== length) {
-    error = new RangeError("AssertBuffer: buffer length is out of range");
-    throw error;
-  }
+    if (!Buffer.isBuffer( value )) {
+        error = new TypeError( "AssertBuffer: value '" + _parseValue( value ) + "' is not a buffer" );
+        throw error;
+    } else if (length > 0 && value.length !== length) {
+        error = new RangeError( "AssertBuffer: buffer length is out of range" );
+        throw error;
+    }
 };
 
 /**
@@ -220,17 +219,17 @@ Assert.buffer = function (value, allowNullOrUndefined, length) {
  * @param {Date} value The value to test.
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Assert.date = function (value, allowNullOrUndefined) {
+Assert.date = function ( value, allowNullOrUndefined ) {
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  var error;
-  if (_getType(value) !== "date") {
-      error = new TypeError("AssertBuffer: value '" + _parseValue(value) + "' is not a date");
-      throw error;
-  }
+    var error;
+    if (_getType( value ) !== "date") {
+        error = new TypeError( "AssertBuffer: value '" + _parseValue( value ) + "' is not a date" );
+        throw error;
+    }
 };
 
 /**
@@ -238,17 +237,17 @@ Assert.date = function (value, allowNullOrUndefined) {
  * @param {*} value The value to test.
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Assert.defined = function (value, allowNullOrUndefined) {
+Assert.defined = function ( value, allowNullOrUndefined ) {
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  var error;
-  if (value === null || value === undefined) {
-    error = new TypeError("AssertDefined: value is not defined");
-    throw error;
-  }
+    var error;
+    if (value === null || value === undefined) {
+        error = new TypeError( "AssertDefined: value is not defined" );
+        throw error;
+    }
 };
 
 /**
@@ -256,15 +255,15 @@ Assert.defined = function (value, allowNullOrUndefined) {
  * @param {Error} value The value to test.
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Assert.error = function (value, allowNullOrUndefined) {
+Assert.error = function ( value, allowNullOrUndefined ) {
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  var error;
-    if (_getType(value) !== "error") {
-        error = new TypeError("AssertError: value '" + _parseValue(value) + "' is not an Error");
+    var error;
+    if (_getType( value ) !== "error") {
+        error = new TypeError( "AssertError: value '" + _parseValue( value ) + "' is not an Error" );
         throw error;
     }
 };
@@ -274,17 +273,17 @@ Assert.error = function (value, allowNullOrUndefined) {
  * @param {Function} value The value to test.
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Assert.method = function (value, allowNullOrUndefined) {
+Assert.method = function ( value, allowNullOrUndefined ) {
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  var error;
-  if (!value || _getType(value) !== "function") {
-    error = new TypeError("AssertFunction: value '" + _parseValue(value) + "' is not a function");
-    throw error;
-  }
+    var error;
+    if (!value || _getType( value ) !== "function") {
+        error = new TypeError( "AssertFunction: value '" + _parseValue( value ) + "' is not a function" );
+        throw error;
+    }
 };
 
 /**
@@ -293,17 +292,17 @@ Assert.method = function (value, allowNullOrUndefined) {
  * @param {Function} constructorFunction A constructor function.
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Assert.instance = function (value, constructorFunction, allowNullOrUndefined) {
+Assert.instance = function ( value, constructorFunction, allowNullOrUndefined ) {
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  var error;
-  if (!(value instanceof constructorFunction)) {
-    error = new TypeError("AssertInstance: value is not an instance of '" + constructorFunction.name + "'");
-    throw error;
-  }
+    var error;
+    if (!(value instanceof constructorFunction)) {
+        error = new TypeError( "AssertInstance: value is not an instance of '" + constructorFunction.name + "'" );
+        throw error;
+    }
 };
 
 /**
@@ -311,17 +310,17 @@ Assert.instance = function (value, constructorFunction, allowNullOrUndefined) {
  * @param {Number} value The value to test.
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Assert.number = function (value, allowNullOrUndefined) {
+Assert.number = function ( value, allowNullOrUndefined ) {
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  var error;
-  if (_getType(value) !== "number") {
-    error = new TypeError("AssertNumber: value '" + _parseValue(value) + "' is not a number");
-    throw error;
-  }
+    var error;
+    if (_getType( value ) !== "number") {
+        error = new TypeError( "AssertNumber: value '" + _parseValue( value ) + "' is not a number" );
+        throw error;
+    }
 };
 
 /**
@@ -330,28 +329,28 @@ Assert.number = function (value, allowNullOrUndefined) {
  * @param {...String} [requiredProperties] A list of property names that <b>must</b> be defined in <code>value</code>.
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Assert.object = function (value, allowNullOrUndefined, requiredProperties) {
+Assert.object = function ( value, allowNullOrUndefined, requiredProperties ) {
 
-  var startIndex = 1;
-  if (Assert.isBoolean(allowNullOrUndefined)) {
-    if (allowNullOrUndefined && !Assert.isDefined(value)) {
-      return;
+    var startIndex = 1;
+    if (Assert.isBoolean( allowNullOrUndefined )) {
+        if (allowNullOrUndefined && !Assert.isDefined( value )) {
+            return;
+        }
+        startIndex = 2;
     }
-    startIndex = 2;
-  }
 
-  var error;
-  if (!value || _getType(value) !== "object") {
-    error = new TypeError("AssertObject: value '" + _parseValue(value) + "' is not an object");
-    throw error;
-  } else if (arguments.length > startIndex ) {
-    Array.prototype.slice.call(arguments, startIndex).forEach(function (p) {
-      if (value[p] === undefined) {
-        error = new TypeError("AssertObject: value '" + _parseValue(value) + "' is missing required properties");
+    var error;
+    if (!value || _getType( value ) !== "object") {
+        error = new TypeError( "AssertObject: value '" + _parseValue( value ) + "' is not an object" );
         throw error;
-      }
-    });
-  }
+    } else if (arguments.length > startIndex) {
+        Array.prototype.slice.call( arguments, startIndex ).forEach( function ( p ) {
+            if (value[p] === undefined) {
+                error = new TypeError( "AssertObject: value '" + _parseValue( value ) + "' is missing required properties" );
+                throw error;
+            }
+        } );
+    }
 };
 
 /**
@@ -359,17 +358,17 @@ Assert.object = function (value, allowNullOrUndefined, requiredProperties) {
  * @param {RegExp} value The value to test.
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  */
-Assert.regExp = function (value, allowNullOrUndefined) {
+Assert.regExp = function ( value, allowNullOrUndefined ) {
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  var error;
-  if (_getType(value) !== "regexp") {
-      error = new TypeError("AssertRegExp: value '" + _parseValue(value) + "' is not a RegExp");
-      throw error;
-  }
+    var error;
+    if (_getType( value ) !== "regexp") {
+        error = new TypeError( "AssertRegExp: value '" + _parseValue( value ) + "' is not a RegExp" );
+        throw error;
+    }
 };
 
 /**
@@ -378,27 +377,27 @@ Assert.regExp = function (value, allowNullOrUndefined) {
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  * @param {Number} [length] The required length of the buffer, This value is optional.
  */
-Assert.string = function (value, allowNullOrUndefined, length) {
+Assert.string = function ( value, allowNullOrUndefined, length ) {
 
-  if (Assert.isNumber(allowNullOrUndefined)) {
-    length = allowNullOrUndefined;
-    allowNullOrUndefined = false;
-  }
+    if (Assert.isNumber( allowNullOrUndefined )) {
+        length = allowNullOrUndefined;
+        allowNullOrUndefined = false;
+    }
 
-  if (allowNullOrUndefined && !Assert.isDefined(value)) {
-    return;
-  }
+    if (allowNullOrUndefined && !Assert.isDefined( value )) {
+        return;
+    }
 
-  length = Assert.setDefault(length, 0);
+    length = Assert.setDefault( length, 0 );
 
-  var error;
-  if (_getType(value) !== "string") {
-    error = new TypeError("AssertString: value '" + _parseValue(value) + "' is not a string");
-    throw error;
-  } else if (length > 0 && value.length !== length) {
-    error = new RangeError("AssertString: string length is out of range");
-    throw error;
-  }
+    var error;
+    if (_getType( value ) !== "string") {
+        error = new TypeError( "AssertString: value '" + _parseValue( value ) + "' is not a string" );
+        throw error;
+    } else if (length > 0 && value.length !== length) {
+        error = new RangeError( "AssertString: string length is out of range" );
+        throw error;
+    }
 };
 
 /**
@@ -407,32 +406,32 @@ Assert.string = function (value, allowNullOrUndefined, length) {
  * @param {Boolean} [allowNullOrUndefined] Flag that instructs the system to allow null and undefined values.
  * @param {...Function} assertFunctions arguments One or more assert functions.
  */
-Assert.variant = function(value, allowNullOrUndefined, assertFunctions) {
+Assert.variant = function ( value, allowNullOrUndefined, assertFunctions ) {
 
-  var startIndex = 1;
-  if (Assert.isBoolean(allowNullOrUndefined)) {
-    if (allowNullOrUndefined && !Assert.isDefined(value)) {
-      return;
+    var startIndex = 1;
+    if (Assert.isBoolean( allowNullOrUndefined )) {
+        if (allowNullOrUndefined && !Assert.isDefined( value )) {
+            return;
+        }
+        startIndex = 2;
     }
-    startIndex = 2;
-  }
 
-  var passedOneCheck = false;
-  var checks = Array.prototype.slice.call(arguments, startIndex);
-  var errorMessage = "";
+    var passedOneCheck = false;
+    var checks = Array.prototype.slice.call( arguments, startIndex );
+    var errorMessage = "";
 
-  checks.forEach( function(assert) {
-    try {
-      assert(value);
-      passedOneCheck = true;
-    } catch (e) {
-      errorMessage += e.message + ". ";
+    checks.forEach( function ( assert ) {
+        try {
+            assert( value );
+            passedOneCheck = true;
+        } catch (e) {
+            errorMessage += e.message + ". ";
+        }
+    } );
+
+    if (!passedOneCheck) {
+        throw new TypeError( errorMessage );
     }
-  });
-
-  if ( !passedOneCheck ) {
-    throw new TypeError(errorMessage);
-  }
 
 };
 
@@ -443,6 +442,6 @@ Assert.variant = function(value, allowNullOrUndefined, assertFunctions) {
  * @param {*} defValue The default value to return if value is not set.
  * @returns {*}
  */
-Assert.setDefault = function (value, defValue) {
-  return value !== null && value !== undefined ? value : defValue;
+Assert.setDefault = function ( value, defValue ) {
+    return value !== null && value !== undefined ? value : defValue;
 };

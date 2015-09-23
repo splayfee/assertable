@@ -1,45 +1,40 @@
 {
-  "name": "fail-fast",
-  "version": "1.0.4",
-  "description": "Test for type/existence of method arguments before they can cause problems deeper down the stack.",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.sd.apple.com/interactive-qa-tools/fail-fast.git"
-  },
-  "bugs": {
-    "url": "https://gitlab.sd.apple.com/interactive-qa-tools/fail-fast/issues"
-  },
-  "docs": {
-    "url": "https://gitlab.sd.apple.com/interactive-qa-tools/fail-fast/blob/master/README.md"
-  },
-  "license": "APPLE",
-  "scripts": {
-    "test": "./node_modules/.bin/gulp"
-  },
-  "keywords": [
-    "validator",
-    "tool",
-    "arguments",
-    "method",
-    "function",
-    "test"
-  ],
-  "homepage": "https://gitlab.sd.apple.com/interactive-qa-tools/fail-fast",
-  "author": "David LaTour <david@edium.com>",
-  "dependencies": {},
-  "devDependencies": {
-    "chai": "^1.9.2",
-    "del": "^0.1.3",
-    "gulp": "^3.8.9",
-    "gulp-autowire": "^1.0.3",
-    "gulp-eslint": "^0.1.8",
-    "gulp-istanbul": "^0.3.1",
-    "gulp-jsonlint": "^0.1.0",
-    "gulp-mocha": "^1.1.1",
-    "run-sequence": "^1.0.1"
-  },
-  "publishConfig": {
-    "registry": "https://npm.interactive-apps.apple.com/"
-  }
+    "name": "fail-fast",
+    "version": "1.0.4",
+    "description": "Assertion library that can test for type/existence of method arguments before they can cause problems deeper down the stack.",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/splayfee/fail-fast.git"
+    },
+    "bugs": {
+        "url": "https://github.com/splayfee/fail-fast/issues"
+    },
+    "docs": {
+        "url": "https://github.com/splayfee/fail-fast/blob/master/LICENSE-MITd"
+    },
+    "license": "MIT",
+    "scripts": {
+        "test": "gulp"
+    },
+    "keywords": [
+        "validator",
+        "tool",
+        "arguments",
+        "method",
+        "function",
+        "test"
+    ],
+    "homepage": "https://github.com/splayfee/fail-fast",
+    "author": "David LaTour <david@edium.com>",
+    "devDependencies": {
+        "chai": "^3.3.0",
+        "del": "^2.0.2",
+        "gulp": "^3.9.0",
+        "gulp-eslint": "^1.0.0",
+        "gulp-istanbul": "^0.10.0",
+        "gulp-jsonlint": "^1.1.0",
+        "gulp-mocha": "^2.1.3",
+        "run-sequence": "^1.1.4"
+    }
 }

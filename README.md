@@ -1,8 +1,8 @@
-#  Fail Fast
+# Fail Fast
 ## Overview
-**FailFast** lets developers employ defensive programming techniques in their **Node.js** applications. Since Javascript provides dynamic typing it is often possible to generate errors that are difficult to debug by providing one or more methods with incorrect or missing arguments. **Fail Fast** allows you to test for type/existence of method arguments before they can cause problems deeper down the stack.
+**FailFast** is an assertion library that allows developers to employ defensive programming techniques in their **Node.js** applications. Since Javascript provides dynamic typing it is often possible to generate errors that are difficult to debug by providing one or more methods with incorrect or missing arguments. **Fail Fast** allows you to user assertions to test for type/existence of method arguments before they can cause problems deeper down the stack.
 
-Note - this is just one way to develop using Javascript and some developers prefer to shift the responsibility caller rather than enforce type within each method. As with anything it comes down to personal preference.
+Note - this is just one way to develop using Javascript and some developers prefer to shift the responsibility to the caller rather than enforce type within each method. As with anything it comes down to personal preference.
 
 ## Features
  - Assert or test for the type of an argument or variable including:
@@ -110,4 +110,4 @@ function doSomeWork(someArray, someBoolean) {
 
 ## License
 
-Copyright (c) 2014 Apple Inc. All rights reserved.
+MIT
