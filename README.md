@@ -1,4 +1,4 @@
-#  Fail Fast
+# Fail Fast
 ## Overview
 **FailFast** lets developers employ defensive programming techniques in their **Node.js** applications. Since Javascript provides dynamic typing it is often possible to generate errors that are difficult to debug by providing one or more methods with incorrect or missing arguments. **Fail Fast** allows you to test for type/existence of method arguments before they can cause problems deeper down the stack.
 
