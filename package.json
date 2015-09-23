@@ -1,17 +1,17 @@
 {
-    "name": "fail-fast",
+    "name": "assertable",
     "version": "1.0.4",
     "description": "Assertion library that can test for type/existence of method arguments before they can cause problems deeper down the stack.",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/splayfee/fail-fast.git"
+        "url": "https://github.com/splayfee/assertable.git"
     },
     "bugs": {
-        "url": "https://github.com/splayfee/fail-fast/issues"
+        "url": "https://github.com/splayfee/assertable/issues"
     },
     "docs": {
-        "url": "https://github.com/splayfee/fail-fast/blob/master/LICENSE-MIT"
+        "url": "https://github.com/splayfee/assertable/blob/master/LICENSE-MIT"
     },
     "license": "MIT",
     "scripts": {
@@ -25,7 +25,7 @@
         "function",
         "test"
     ],
-    "homepage": "https://github.com/splayfee/fail-fast",
+    "homepage": "https://github.com/splayfee/assertable",
     "author": "David LaTour <david@edium.com>",
     "devDependencies": {
         "chai": "^3.3.0",

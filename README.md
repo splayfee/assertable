@@ -1,6 +1,6 @@
-# Fail Fast
+# Assertable
 ## Overview
-**FailFast** is an assertion library that allows developers to employ defensive programming techniques in their **Node.js** applications. Since Javascript provides dynamic typing it is often possible to generate errors that are difficult to debug by providing one or more methods with incorrect or missing arguments. **Fail Fast** allows you to user assertions to test for type/existence of method arguments before they can cause problems deeper down the stack.
+**Assertable** is an assertion library that allows developers to employ defensive programming techniques in their **Node.js** applications. Since Javascript provides dynamic typing it is often possible to generate errors that are difficult to debug by providing one or more methods with incorrect or missing arguments. **Assertable** allows you to user assertions to test for type/existence of method arguments before they can cause problems deeper down the stack.
 
 Note - this is just one way to develop using Javascript and some developers prefer to shift the responsibility to the caller rather than enforce type within each method. As with anything it comes down to personal preference.
 
@@ -25,14 +25,14 @@ Note - this is just one way to develop using Javascript and some developers pref
 
 ## Installation
 
-	$ npm install fail-fast
+	$ npm install assertable
 
 ## Examples
 
 Begin by referencing the module:
 
 ```javascript
-var Assert = require("fail-fast");
+var Assert = require("assertable");
 ```
 
 Once you have reference you can type-check your arguments within functions:
