@@ -1,6 +1,6 @@
 # Assertable
 ## Overview
-**Assertable** is an assertion library that allows developers to employ defensive programming techniques in their **Node.js** applications. Since Javascript provides dynamic typing it is often possible to generate errors that are difficult to debug by providing one or more methods with incorrect or missing arguments. **Assertable** allows you to user assertions to test for type/existence of method arguments before they can cause problems deeper down the stack.
+**Assertable** is an assertion library that allows developers to employ defensive programming techniques in their **Node.js** applications. Since Javascript provides dynamic typing it is often possible to generate errors that are difficult to debug by providing one or more methods with incorrect or missing arguments. **Assertable** allows you to use assertions to test for type/existence of method arguments before they can cause problems deeper down the stack.
 
 Note - this is just one way to develop using Javascript and some developers prefer to shift the responsibility to the caller rather than enforce type within each method. As with anything it comes down to personal preference.
 
@@ -49,7 +49,7 @@ function doSomeWork(someArray, someBoolean, someBuffer, someFunction) {
 }
 
 function doSomeWork(someClass, someNumber, someObject, someString) {
-	Assert.method(someFunction);
+	Assert.method(someClass);
 	Assert.number(someNumber);
 	Assert.object(someObject, "property1", "property2"); // Validates an object and the supplied properties.
 	Assert.string(someString, 10) // Validates a string of length 10
