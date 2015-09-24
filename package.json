@@ -1,6 +1,6 @@
 {
     "name": "assertable",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Assertion library that can test for type/existence of method arguments before they can cause problems deeper down the stack.",
     "main": "index.js",
     "repository": {
