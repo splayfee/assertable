@@ -1,8 +1,19 @@
 # Assertable
+
 ## Overview
 **Assertable** is an assertion library that allows developers to employ defensive programming techniques in their **Node.js** applications. Since Javascript provides dynamic typing it is often possible to generate errors that are difficult to debug by providing one or more methods with incorrect or missing arguments. **Assertable** allows you to use assertions to test for type/existence of method arguments before they can cause problems deeper down the stack.
 
-Note - this is just one way to develop using Javascript and some developers prefer to shift the responsibility to the caller rather than enforce type within each method. As with anything it comes down to personal preference.
+This version is a modernized runtime assertion helper for Node.js 20+, browsers, and mobile runtimes.
+
+## What changed
+
+- Removed Gulp
+- Replaced the legacy test suite with Vitest.
+- Switched the package manager declaration to pnpm.
+- Added ESM, CommonJS, and browser-friendly UMD entry points.
+- Removed the Node `util.inspect()` dependency so the package can run in browsers and mobile webviews.
+- Kept the public API and method names intact.
+- Rewrote the export as a modern class with static methods.
 
 ## Features
  - Assert or test for the type of an argument or variable including:
@@ -23,16 +34,47 @@ Note - this is just one way to develop using Javascript and some developers pref
  - Optionally, each test may pass an assert if the value is null or undefined.
  - Provide default values for arguments that is safe to use with ```0``` and ```false```
 
-## Installation
+## Install
 
-	$ npm install assertable
+```bash
+pnpm add assertable
+```
+
+## Usage
+
+### CommonJS
+
+```js
+const Assert = require('assertable');
+
+Assert.string('hello');
+Assert.object({ id: 1 }, 'id');
+```
+
+### ESM
+
+```js
+import Assert from 'assertable';
+
+Assert.number(123);
+Assert.variant('123', Assert.string, Assert.number);
+```
+
+### Browser
+
+```html
+<script src="./dist/assertable.umd.js"></script>
+<script>
+  Assertable.object({ id: 1 }, 'id');
+</script>
+```
 
 ## Examples
 
-Begin by referencing the module:
+Begin by referencing the module (see above):
 
 ```javascript
-var Assert = require("assertable");
+import Assert from 'assertable';
 ```
 
 Once you have reference you can type-check your arguments within functions:
@@ -106,6 +148,20 @@ function doSomeWork(someArray, someBoolean) {
 	Assert.isArray(someArray);
 	Assert.isBoolean(someBoolean);
 }
+```
+There is no need to instantiate the class.
+
+## Notes on buffer compatibility
+
+In Node.js, `Assert.isBuffer()` and `Assert.buffer()` support `Buffer`.
+
+In browsers and mobile runtimes, those same APIs support `ArrayBuffer` and typed-array views such as `Uint8Array`, which are the closest cross-platform equivalent.
+
+## Test
+
+```bash
+pnpm install
+pnpm test
 ```
 
 ## License

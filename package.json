@@ -1,40 +1,58 @@
 {
-    "name": "assertable",
-    "version": "1.0.6",
-    "description": "Assertion library that can test for type/existence of method arguments before they can cause problems deeper down the stack.",
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/splayfee/assertable.git"
+  "name": "assertable",
+  "version": "2.0.0",
+  "description": "Tiny assertion helpers for runtime argument validation in Node.js, browsers, and mobile runtimes.",
+  "main": "index.js",
+  "module": "index.mjs",
+  "browser": "dist/assertable.umd.js",
+  "exports": {
+    ".": {
+      "require": "./index.js",
+      "import": "./index.mjs",
+      "default": "./index.js"
     },
-    "bugs": {
-        "url": "https://github.com/splayfee/assertable/issues"
-    },
-    "docs": {
-        "url": "https://github.com/splayfee/assertable/blob/master/LICENSE-MIT"
-    },
-    "license": "MIT",
-    "scripts": {
-        "test": "gulp"
-    },
-    "keywords": [
-        "validator",
-        "tool",
-        "arguments",
-        "method",
-        "function",
-        "test"
-    ],
-    "homepage": "https://github.com/splayfee/assertable",
-    "author": "David LaTour <david@edium.com>",
-    "devDependencies": {
-        "chai": "^4.3.7",
-        "del": "^7.0.0",
-        "gulp": "^4.0.2",
-        "gulp-eslint": "^6.0.0",
-        "gulp-istanbul": "^1.1.3",
-        "gulp-jsonlint": "^1.3.2",
-        "gulp-mocha": "^8.0.0",
-        "run-sequence": "^2.2.1"
-    }
+    "./browser": "./dist/assertable.umd.js"
+  },
+  "files": [
+    "index.js",
+    "index.mjs",
+    "dist",
+    "LICENSE-MIT",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/splayfee/assertable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/splayfee/assertable/issues"
+  },
+  "docs": {
+    "url": "https://github.com/splayfee/assertable/blob/master/LICENSE-MIT"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "validator",
+    "tool",
+    "arguments",
+    "method",
+    "function",
+    "test",
+    "assert",
+    "browser",
+    "mobile"
+  ],
+  "homepage": "https://github.com/splayfee/assertable",
+  "author": "David LaTour <david@edium.com>",
+  "devDependencies": {
+    "vitest": "^4.1.3"
+  }
 }

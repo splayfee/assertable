@@ -1,0 +1,31 @@
+import Assert from './index.js';
+
+export default Assert;
+export const {
+  isArray,
+  isBoolean,
+  isBuffer,
+  isDate,
+  isDefined,
+  isError,
+  isFunction,
+  isInstance,
+  isNumber,
+  isObject,
+  isRegExp,
+  isString,
+  array,
+  boolean,
+  buffer,
+  date,
+  defined,
+  error,
+  method,
+  instance,
+  number,
+  object,
+  regExp,
+  string,
+  variant,
+  setDefault,
+} = Assert;
