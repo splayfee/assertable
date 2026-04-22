@@ -1,6 +1,6 @@
 {
   "name": "assertable",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Tiny assertion helpers for runtime argument validation in Node.js, browsers, and mobile runtimes.",
   "main": "index.js",
   "module": "index.mjs",
@@ -23,7 +23,7 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.33.1+sha512.05ba3c1d5d1c18f68df06470d74055e62d41fc110a0c660db1b2dfb2785327f04cf0f68345d4609bc52089e7fa0343c31593b2f9594e2c5d5da426230acc9820",
   "repository": {
     "type": "git",
     "url": "https://github.com/splayfee/assertable.git"
@@ -53,6 +53,6 @@
   "homepage": "https://github.com/splayfee/assertable",
   "author": "David LaTour <david@edium.com>",
   "devDependencies": {
-    "vitest": "^4.1.3"
+    "vitest": "^4.1.5"
   }
 }
